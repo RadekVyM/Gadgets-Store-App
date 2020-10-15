@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GadgetStoreApp.BalancePage"
+             
+             xmlns:local="clr-namespace:GadgetStoreApp"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid Padding="{x:Static local:StatusBar.Padding}"
+          RowSpacing="0" RowDefinitions="auto,*" >
+
+        <Label Text="BALANCE" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"/>
+
+        <Grid x:Name="appBarGrid">
+            <local:SvgView HorizontalOptions="Start" VerticalOptions="Start" Path="{StaticResource BackArrowPath}" Colour="#000000"
+                           HeightRequest="18" WidthRequest="18" Margin="24"/>
+            <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Source={RelativeSource AncestorType={x:Type local:BalancePage}}, Path=LogoImageName, Converter={StaticResource ImageSourceConverter}}"
+                   Aspect="AspectFit" WidthRequest="100" HeightRequest="20"/>
+            <local:SvgView HorizontalOptions="End" VerticalOptions="Start" Path="{StaticResource SearchPath}" Colour="#000000"
+                           HeightRequest="18" WidthRequest="18" Margin="24"/>
+            <BoxView HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="Transparent" 
+                     HeightRequest="66" WidthRequest="66">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+        </Grid>
+    </Grid>
+</ContentPage>

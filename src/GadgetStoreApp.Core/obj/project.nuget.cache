@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "YJhCWRCQBDfu7QkqQOWjrlXwdFgw+GaTYg42Q4m1OLRGT+8bToS1Qhq4DcHWywJeCU53xbH29bTAWnJCnVvJgw==",
+  "success": true,
+  "projectFilePath": "D:\\git\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp.Core\\GadgetStoreApp.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\radec\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

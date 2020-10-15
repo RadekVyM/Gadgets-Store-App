@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GadgetStoreApp"
+             x:Class="GadgetStoreApp.ReversedFlyout"
+             
+             InputTransparent="False"
+             IsVisible="False">
+
+    <Grid x:Name="mainGrid" BackgroundColor="Transparent"
+          InputTransparent="False">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer/>
+        </Grid.GestureRecognizers>
+
+        <BoxView x:Name="backgroundBoxView" BackgroundColor="{DynamicResource BackgroundColour}"/>
+        
+        <Grid x:Name="contentGrid" Padding="{x:Static local:StatusBar.Padding}"
+              RowSpacing="0" RowDefinitions="auto,*">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseLabelStyle}">
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+            </Grid.Resources>
+            
+            <local:SvgView x:Name="crossSvg" Margin="24" Path="{StaticResource CrossPath}" Colour="#ffffff"
+                           HorizontalOptions="Start" VerticalOptions="Start"
+                           HeightRequest="18" WidthRequest="18">
+                <local:SvgView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"/>
+                </local:SvgView.GestureRecognizers>
+            </local:SvgView>
+
+            <Grid x:Name="innerContentGrid" Grid.Row="1" Margin="24,0,0,0" VerticalOptions="Start"
+                  RowDefinitions="*,3*,*">
+                <StackLayout VerticalOptions="End" Spacing="0">
+                    <Label Text="Hello," FontSize="20"/>
+                    <Label Text="Jan Novák" FontSize="20"/>
+                </StackLayout>
+                <StackLayout x:Name="itemsStack" Grid.Row="1" Spacing="25" VerticalOptions="Center" HorizontalOptions="Start"
+                             BindableLayout.ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:ReversedFlyout}}, Path=Items}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <local:SvgView HorizontalOptions="Start" VerticalOptions="Center"
+                                               HeightRequest="18" WidthRequest="18"
+                                               Path="{Binding IconPath}" Colour="{DynamicResource DetailColour}"/>
+                                <Label Text="{Binding Text}" FontSize="14" Margin="0,1,0,0"/>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ItemTapped"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+                </StackLayout>
+                <BoxView x:Name="lineBoxView" Grid.Row="2" BackgroundColor="{DynamicResource LightBackgroundColour}"
+                         VerticalOptions="Start" HorizontalOptions="Start" 
+                         HeightRequest="1.8" CornerRadius="0.9"/>
+                <Label Grid.Row="2" Text="Logout" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="somethingInBackground" RowDefinitions="*, 0.6*" RowSpacing="0"
+              HorizontalOptions="Start" VerticalOptions="Center">
+            <BoxView CornerRadius="30" BackgroundColor="{DynamicResource LightBackgroundColour}" Margin="0"
+                     Grid.RowSpan="2"/>
+            <BoxView CornerRadius="30" BackgroundColor="{DynamicResource DarkBackgroundColour}" Margin="0"
+                     Grid.Row="1"/>
+        </Grid>
+        <Frame x:Name="imageFrame" HasShadow="False" Padding="0" Margin="0"
+               BackgroundColor="Transparent"
+               CornerRadius="30"
+               HorizontalOptions="Start" VerticalOptions="Start">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseTapped"/>
+            </Frame.GestureRecognizers>
+            
+            <Image x:Name="image" BackgroundColor="Transparent" Aspect="AspectFill"/>
+        </Frame>
+    </Grid>
+    
+</ContentView>
