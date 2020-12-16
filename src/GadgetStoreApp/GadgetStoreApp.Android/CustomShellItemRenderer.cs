@@ -24,7 +24,7 @@ namespace GadgetStoreApp.Droid
             bottomView = outerlayout.FindViewById<BottomNavigationView>(Resource.Id.bottomtab_tabbar);
             shellOverlay = outerlayout.FindViewById<FrameLayout>(Resource.Id.bottomtab_tabbar_container);
 
-            if (ShellItem is CustomFlyout todoTabBar && todoTabBar.ReversedFlyout != null)
+            if (ShellItem is CustomFlyout flyout && flyout.ReversedFlyout != null)
                 SetupFlyout();
 
             return outerlayout;
