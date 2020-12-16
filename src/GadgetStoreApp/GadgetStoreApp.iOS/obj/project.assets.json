@@ -1230,6 +1230,7 @@
         "lib/MonoAndroid10/Sharpnado.Shadows.pdb",
         "lib/Xamarin.iOS10/Sharpnado.Shadows.dll",
         "lib/Xamarin.iOS10/Sharpnado.Shadows.iOS.dll",
+        "lib/Xamarin.iOS10/Sharpnado.Shadows.iOS.dll.mdb",
         "lib/Xamarin.iOS10/Sharpnado.Shadows.iOS.pdb",
         "lib/Xamarin.iOS10/Sharpnado.Shadows.pdb",
         "lib/netstandard2.0/Sharpnado.Shadows.dll",
