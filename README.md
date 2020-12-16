@@ -26,3 +26,9 @@ Feel free to take this code and do what you will, but please make sure you ackno
 [Sharpnado.Shadows](https://www.nuget.org/packages/Sharpnado.Shadows/)
 
 [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/)
+
+[glidex.forms](https://www.nuget.org/packages/glidex.forms/)
+
+[Xamarin.FFImageLoading.Forms](https://www.nuget.org/packages/Xamarin.FFImageLoading.Forms/)
+
+[![snppts](https://camo.githubusercontent.com/cd35f0ca9d14d9c9a7c4f35e9321fc32fa6369570292080e6c44fe8522768139/68747470733a2f2f7777772e736e707074732e6465762f696d672f736e707074732d62616467652e6a7067)](https://snppts.dev/)
