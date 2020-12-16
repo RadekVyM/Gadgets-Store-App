@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
             "projectReferences": {}
           }
         },
@@ -42,6 +43,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "dependencies": {
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -60,7 +62,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -83,14 +85,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "monoandroid90"
+          "monoandroid10.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "monoandroid90": {
+          "monoandroid10.0": {
             "projectReferences": {
               "D:\\git\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp\\GadgetStoreApp\\GadgetStoreApp.csproj": {
                 "projectPath": "D:\\git\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp\\GadgetStoreApp\\GadgetStoreApp.csproj"
@@ -100,7 +102,7 @@
         }
       },
       "frameworks": {
-        "monoandroid90": {
+        "monoandroid10.0": {
           "dependencies": {
             "Sharpnado.Shadows": {
               "target": "Package",
@@ -114,9 +116,17 @@
               "target": "Package",
               "version": "[1.5.3.2, )"
             },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.8.0.1534, )"
+              "version": "[4.8.0.1687, )"
+            },
+            "glidex.forms": {
+              "target": "Package",
+              "version": "[2.1.0.470, )"
             }
           }
         }
@@ -149,6 +159,7 @@
         },
         "frameworks": {
           "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
             "projectReferences": {
               "D:\\git\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp.Core\\GadgetStoreApp.Core.csproj": {
                 "projectPath": "D:\\git\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp.Core\\GadgetStoreApp.Core.csproj"
@@ -164,10 +175,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "dependencies": {
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[5.0.1, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -187,9 +199,13 @@
               "target": "Package",
               "version": "[1.5.3.2, )"
             },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.8.0.1534, )"
+              "version": "[4.8.0.1687, )"
             }
           },
           "imports": [
@@ -202,7 +218,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

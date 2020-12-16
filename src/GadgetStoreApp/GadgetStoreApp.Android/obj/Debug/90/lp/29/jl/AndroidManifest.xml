@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.support.localbroadcastmanager" >
+    package="android.support.loader" >
 
     <uses-sdk android:minSdkVersion="14" />
 

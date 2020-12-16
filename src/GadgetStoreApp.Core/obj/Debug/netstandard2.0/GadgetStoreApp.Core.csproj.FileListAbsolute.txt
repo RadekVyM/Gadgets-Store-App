@@ -1,0 +1,9 @@
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\bin\Debug\netstandard2.0\GadgetStoreApp.Core.deps.json
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\bin\Debug\netstandard2.0\GadgetStoreApp.Core.dll
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\bin\Debug\netstandard2.0\GadgetStoreApp.Core.pdb
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\obj\Debug\netstandard2.0\GadgetStoreApp.Core.csprojAssemblyReference.cache
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\obj\Debug\netstandard2.0\GadgetStoreApp.Core.AssemblyInfoInputs.cache
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\obj\Debug\netstandard2.0\GadgetStoreApp.Core.AssemblyInfo.cs
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\obj\Debug\netstandard2.0\GadgetStoreApp.Core.csproj.CoreCompileInputs.cache
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\obj\Debug\netstandard2.0\GadgetStoreApp.Core.dll
+D:\git\RadekVyM\Gadgets-Store-App\src\GadgetStoreApp.Core\obj\Debug\netstandard2.0\GadgetStoreApp.Core.pdb

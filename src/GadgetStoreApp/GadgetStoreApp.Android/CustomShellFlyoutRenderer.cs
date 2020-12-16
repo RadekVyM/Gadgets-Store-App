@@ -1,8 +1,7 @@
 ﻿using Android.Content;
 using Android.Graphics;
-using Android.Graphics.Drawables;
-using Android.Support.V4.Widget;
 using Android.Views;
+using AndroidX.DrawerLayout.Widget;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

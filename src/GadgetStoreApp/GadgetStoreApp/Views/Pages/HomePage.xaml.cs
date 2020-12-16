@@ -96,7 +96,7 @@ namespace GadgetStoreApp
                                 new float[] { 0.2f, 1f },
                                 SKShaderTileMode.Clamp);
 
-                canvas.DrawRoundRect(0, 0, info.Width, info.Height * 2, (float)(40 * Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density), (float)(40 * Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density), paint);
+                canvas.DrawRoundRect(0, 0, info.Width, info.Height * 2, (float)(40 * DeviceDisplay.MainDisplayInfo.Density), (float)(40 * DeviceDisplay.MainDisplayInfo.Density), paint);
             }
         }
 

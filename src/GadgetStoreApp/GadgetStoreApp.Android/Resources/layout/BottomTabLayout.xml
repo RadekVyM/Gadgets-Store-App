@@ -15,7 +15,7 @@
         android:layout_gravity="fill"
         android:layout_weight="1" />
         
-      <android.support.design.widget.BottomNavigationView 
+       <com.google.android.material.bottomnavigation.BottomNavigationView 
         android:id="@+id/bottomtab.tabbar"
         android:theme="@style/Widget.Design.BottomNavigationView"
         android:layout_width="match_parent"

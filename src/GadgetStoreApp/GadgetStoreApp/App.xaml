@@ -41,5 +41,6 @@
         <local:RandomColourConverter x:Key="RandomColourConverter"/>
         <local:DoubleToStringConverter x:Key="DoubleToStringConverter"/>
         <local:FeatureEnumToPathConverter x:Key="FeatureEnumToPathConverter"/>
+        <local:FFImageSourceConverter x:Key="FFImageSourceConverter"/>
     </Application.Resources>
 </Application>

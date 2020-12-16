@@ -1,8 +1,8 @@
 ﻿using Android.Content.Res;
 using Android.OS;
-using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
+using Google.Android.Material.BottomNavigation;
 using Xamarin.Forms.Platform.Android;
 
 namespace GadgetStoreApp.Droid

@@ -53,7 +53,7 @@ namespace GadgetStoreApp
             IsVisible = true;
 
             Opacity = 0;
-            await this.FadeTo(1, 120);
+            await this.FadeTo(1, 80);
             Opacity = 1;
 
             somethingInBackground.IsVisible = true;

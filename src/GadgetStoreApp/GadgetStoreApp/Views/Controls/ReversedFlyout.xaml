@@ -80,7 +80,7 @@
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CloseTapped"/>
             </Frame.GestureRecognizers>
-            
+
             <Image x:Name="image" BackgroundColor="Transparent" Aspect="AspectFill"/>
         </Frame>
     </Grid>

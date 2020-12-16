@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     "Xamarin.iOS,Version=v1.0": {
-      "Microsoft.Extensions.DependencyInjection/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection/5.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.8"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
@@ -14,7 +14,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -103,6 +103,15 @@
           "lib/netstandard2.0/WeakEvent.dll": {}
         }
       },
+      "WebP.Touch/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        }
+      },
       "Xamarin.Essentials/1.5.3.2": {
         "type": "package",
         "frameworkAssemblies": [
@@ -116,7 +125,36 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1534": {
+      "Xamarin.FFImageLoading/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "WebP.Touch": "1.0.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        }
+      },
+      "Xamarin.Forms/4.8.0.1687": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -242,11 +280,12 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "GadgetStoreApp.Core": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "3.1.8",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1",
           "Sharpnado.Shadows": "1.2.0",
           "SkiaSharp.Views.Forms": "2.80.2",
           "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1534"
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
+          "Xamarin.Forms": "4.8.0.1687"
         },
         "compile": {
           "bin/placeholder/GadgetStoreApp.dll": {}
@@ -267,10 +306,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
-      "Microsoft.Extensions.DependencyInjection/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection/5.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.8"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
@@ -279,7 +318,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -350,6 +389,15 @@
           "lib/netstandard2.0/WeakEvent.dll": {}
         }
       },
+      "WebP.Touch/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        }
+      },
       "Xamarin.Essentials/1.5.3.2": {
         "type": "package",
         "frameworkAssemblies": [
@@ -363,7 +411,36 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1534": {
+      "Xamarin.FFImageLoading/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "WebP.Touch": "1.0.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        }
+      },
+      "Xamarin.Forms/4.8.0.1687": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -489,11 +566,12 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "GadgetStoreApp.Core": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "3.1.8",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1",
           "Sharpnado.Shadows": "1.2.0",
           "SkiaSharp.Views.Forms": "2.80.2",
           "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1534"
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
+          "Xamarin.Forms": "4.8.0.1687"
         },
         "compile": {
           "bin/placeholder/GadgetStoreApp.dll": {}
@@ -514,10 +592,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
-      "Microsoft.Extensions.DependencyInjection/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection/5.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.8"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
@@ -526,7 +604,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -600,6 +678,15 @@
           "lib/netstandard2.0/WeakEvent.dll": {}
         }
       },
+      "WebP.Touch/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        }
+      },
       "Xamarin.Essentials/1.5.3.2": {
         "type": "package",
         "frameworkAssemblies": [
@@ -613,7 +700,36 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1534": {
+      "Xamarin.FFImageLoading/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "WebP.Touch": "1.0.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        }
+      },
+      "Xamarin.Forms/4.8.0.1687": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -739,11 +855,12 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "GadgetStoreApp.Core": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "3.1.8",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1",
           "Sharpnado.Shadows": "1.2.0",
           "SkiaSharp.Views.Forms": "2.80.2",
           "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1534"
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
+          "Xamarin.Forms": "4.8.0.1687"
         },
         "compile": {
           "bin/placeholder/GadgetStoreApp.dll": {}
@@ -764,10 +881,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
-      "Microsoft.Extensions.DependencyInjection/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection/5.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.8"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
@@ -776,7 +893,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.8": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -850,6 +967,15 @@
           "lib/netstandard2.0/WeakEvent.dll": {}
         }
       },
+      "WebP.Touch/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/WebP.Touch.dll": {}
+        }
+      },
       "Xamarin.Essentials/1.5.3.2": {
         "type": "package",
         "frameworkAssemblies": [
@@ -863,7 +989,36 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1534": {
+      "Xamarin.FFImageLoading/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "WebP.Touch": "1.0.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.dll": {}
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/FFImageLoading.Forms.dll": {}
+        }
+      },
+      "Xamarin.Forms/4.8.0.1687": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -989,11 +1144,12 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "GadgetStoreApp.Core": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "3.1.8",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1",
           "Sharpnado.Shadows": "1.2.0",
           "SkiaSharp.Views.Forms": "2.80.2",
           "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1534"
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
+          "Xamarin.Forms": "4.8.0.1687"
         },
         "compile": {
           "bin/placeholder/GadgetStoreApp.dll": {}
@@ -1015,38 +1171,48 @@
     }
   },
   "libraries": {
-    "Microsoft.Extensions.DependencyInjection/3.1.8": {
-      "sha512": "tUpYcVxFqwh8wVD8O+6A8gJnVtl6L4N1Vd9bLJgQSJ0gjBTUQ/eKwJn0LglkkaDU7GAxODDv4eexgZn3QSE0NQ==",
+    "Microsoft.Extensions.DependencyInjection/5.0.1": {
+      "sha512": "//mDNrYeiJ0eh/awFhDFJQzkRVra/njU5Y4fyK7X29g5HScrzbUkKOKlyTtygthcGFt4zNC8G5CFCjb/oizomA==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/3.1.8",
+      "path": "microsoft.extensions.dependencyinjection/5.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
         "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
-        "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll",
-        "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/net5.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net5.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
-        "microsoft.extensions.dependencyinjection.3.1.8.nupkg.sha512",
-        "microsoft.extensions.dependencyinjection.nuspec"
+        "microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.8": {
-      "sha512": "YP0kEBkSLTVl3znqZEux+xyJpz5iVNwFZf0OPS7nupdKbojSlO7Fa+JuQjLYpWfpAshaMcznu27tjWzfXRJnOA==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
+      "sha512": "ORj7Zh81gC69TyvmcUm9tSzytcy8AVousi+IVRAI8nLieQjOFryRusSFh7+aLk16FN9pQNqJAiMd7BTKINK0kA==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.8",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.3.1.8.nupkg.sha512",
-        "microsoft.extensions.dependencyinjection.abstractions.nuspec"
+        "microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "Sharpnado.Shadows/1.2.0": {
@@ -1258,6 +1424,21 @@
         "thomaslevesque.weakevent.nuspec"
       ]
     },
+    "WebP.Touch/1.0.8": {
+      "sha512": "dvQaAn+m7cKL6k+evUilgikvrnk2qBm/h2lduAHFYIJFaJNIk9Z8pUI09gImzVKx5leUdvtLEzcLOOZAabspTA==",
+      "type": "package",
+      "path": "webp.touch/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.Mac20/WebP.Mac.dll",
+        "lib/Xamarin.Mac20/WebP.Mac.xml",
+        "lib/Xamarin.iOS10/WebP.Touch.dll",
+        "lib/Xamarin.iOS10/WebP.Touch.xml",
+        "webp.touch.1.0.8.nupkg.sha512",
+        "webp.touch.nuspec"
+      ]
+    },
     "Xamarin.Essentials/1.5.3.2": {
       "sha512": "BSLgDJUOPFRwTpQaftM+s4qb/MsTjrqXulEYDOcK6KF3i0Orf75zo3RwRfqnQ8WfpoEFxW/v0jgcPWCvOMgHxg==",
       "type": "package",
@@ -1306,10 +1487,120 @@
         "xamarin.essentials.nuspec"
       ]
     },
-    "Xamarin.Forms/4.8.0.1534": {
-      "sha512": "h5S4nWRBYUNgbs2FtxkSLISh2FUBdLGZ0yVR0KP8utNMTOiRUhWcLzuJf3w4NYtboWFFUx/dyqZpi+aCcIMvSg==",
+    "Xamarin.FFImageLoading/2.4.11.982": {
+      "sha512": "M0sNIQgUPs+le6C2TS4RmZQAURnzaRVizRtnZIZ6/1//qGcEAtEXAGt/tBJz6I1zlP6XlMxq8io6b4sjFP5N9Q==",
       "type": "package",
-      "path": "xamarin.forms/4.8.0.1534",
+      "path": "xamarin.ffimageloading/2.4.11.982",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/FFImageLoading.Platform.dll",
+        "lib/MonoAndroid10/FFImageLoading.Platform.pdb",
+        "lib/MonoAndroid10/FFImageLoading.Platform.xml",
+        "lib/MonoAndroid10/FFImageLoading.dll",
+        "lib/MonoAndroid10/FFImageLoading.pdb",
+        "lib/MonoAndroid10/FFImageLoading.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.Platform.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.Platform.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.Platform.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.Platform.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.Platform.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.Platform.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.xml",
+        "lib/netstandard1.0/FFImageLoading.Platform.dll",
+        "lib/netstandard1.0/FFImageLoading.Platform.xml",
+        "lib/netstandard1.0/FFImageLoading.dll",
+        "lib/netstandard1.0/FFImageLoading.pdb",
+        "lib/netstandard1.0/FFImageLoading.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Platform.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Platform.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.pdb",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.xml",
+        "lib/tizen40/FFImageLoading.Platform.dll",
+        "lib/tizen40/FFImageLoading.Platform.pdb",
+        "lib/tizen40/FFImageLoading.Platform.xml",
+        "lib/tizen40/FFImageLoading.dll",
+        "lib/tizen40/FFImageLoading.pdb",
+        "lib/tizen40/FFImageLoading.xml",
+        "lib/uap/FFImageLoading.Platform.dll",
+        "lib/uap/FFImageLoading.Platform.pdb",
+        "lib/uap/FFImageLoading.Platform.xml",
+        "lib/uap/FFImageLoading.dll",
+        "lib/uap/FFImageLoading.pdb",
+        "lib/uap/FFImageLoading.xml",
+        "lib/win81/FFImageLoading.Platform.dll",
+        "lib/win81/FFImageLoading.Platform.pdb",
+        "lib/win81/FFImageLoading.Platform.xml",
+        "lib/win81/FFImageLoading.dll",
+        "lib/win81/FFImageLoading.pdb",
+        "lib/win81/FFImageLoading.xml",
+        "lib/wpa81/FFImageLoading.Platform.dll",
+        "lib/wpa81/FFImageLoading.Platform.pdb",
+        "lib/wpa81/FFImageLoading.Platform.xml",
+        "lib/wpa81/FFImageLoading.dll",
+        "lib/wpa81/FFImageLoading.pdb",
+        "lib/wpa81/FFImageLoading.xml",
+        "xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+        "xamarin.ffimageloading.nuspec"
+      ]
+    },
+    "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+      "sha512": "7X4t3J1wJj0/0o8+vd91hzSYlrqEeMFC7Mj+0T8O+fcbRSHo/c+QbWscEQiT4AaKCwyO709xq+7aY2XXbK/H7g==",
+      "type": "package",
+      "path": "xamarin.ffimageloading.forms/2.4.11.982",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/FFImageLoading.Forms.Platform.dll",
+        "lib/MonoAndroid10/FFImageLoading.Forms.Platform.pdb",
+        "lib/MonoAndroid10/FFImageLoading.Forms.Platform.xml",
+        "lib/MonoAndroid10/FFImageLoading.Forms.dll",
+        "lib/MonoAndroid10/FFImageLoading.Forms.pdb",
+        "lib/MonoAndroid10/FFImageLoading.Forms.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.Forms.Platform.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.Forms.Platform.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.Forms.Platform.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.Forms.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.Forms.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.Forms.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.Forms.Platform.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.Forms.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.Forms.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.Forms.xml",
+        "lib/netstandard1.0/FFImageLoading.Forms.dll",
+        "lib/netstandard1.0/FFImageLoading.Forms.pdb",
+        "lib/netstandard1.0/FFImageLoading.Forms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Forms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Forms.pdb",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Forms.xml",
+        "lib/tizen40/FFImageLoading.Forms.Platform.dll",
+        "lib/tizen40/FFImageLoading.Forms.Platform.pdb",
+        "lib/tizen40/FFImageLoading.Forms.Platform.xml",
+        "lib/tizen40/FFImageLoading.Forms.dll",
+        "lib/tizen40/FFImageLoading.Forms.pdb",
+        "lib/tizen40/FFImageLoading.Forms.xml",
+        "lib/uap/FFImageLoading.Forms.Platform.dll",
+        "lib/uap/FFImageLoading.Forms.Platform.pdb",
+        "lib/uap/FFImageLoading.Forms.Platform.xml",
+        "lib/uap/FFImageLoading.Forms.dll",
+        "lib/uap/FFImageLoading.Forms.pdb",
+        "lib/uap/FFImageLoading.Forms.xml",
+        "xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
+        "xamarin.ffimageloading.forms.nuspec"
+      ]
+    },
+    "Xamarin.Forms/4.8.0.1687": {
+      "sha512": "o9ACAbleXxorZzIHRBzIloPollwVC7+YTfxE8r3L2frArCHUkrHIy+K+azQag/Un4h2u88DS01HqR16/lMD8zQ==",
+      "type": "package",
+      "path": "xamarin.forms/4.8.0.1687",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1618,7 +1909,7 @@
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.4.8.0.1534.nupkg.sha512",
+        "xamarin.forms.4.8.0.1687.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -1639,7 +1930,8 @@
       "Sharpnado.Shadows >= 1.2.0",
       "SkiaSharp.Views.Forms >= 2.80.2",
       "Xamarin.Essentials >= 1.5.3.2",
-      "Xamarin.Forms >= 4.8.0.1534"
+      "Xamarin.FFImageLoading.Forms >= 2.4.11.982",
+      "Xamarin.Forms >= 4.8.0.1687"
     ]
   },
   "packageFolders": {
@@ -1696,9 +1988,13 @@
             "target": "Package",
             "version": "[1.5.3.2, )"
           },
+          "Xamarin.FFImageLoading.Forms": {
+            "target": "Package",
+            "version": "[2.4.11.982, )"
+          },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[4.8.0.1534, )"
+            "version": "[4.8.0.1687, )"
           }
         }
       }
