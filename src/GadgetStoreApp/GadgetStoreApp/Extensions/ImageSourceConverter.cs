@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Reflection;
 using Xamarin.Forms;
 
 namespace GadgetStoreApp
@@ -9,7 +8,7 @@ namespace GadgetStoreApp
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ImageSource.FromResource("GadgetStoreApp.Images." + value?.ToString(), typeof(ImageSourceConverter).GetTypeInfo().Assembly);
+            return ImageSource.FromResource("GadgetStoreApp.Images." + value?.ToString(), typeof(ImageSourceConverter).Assembly);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

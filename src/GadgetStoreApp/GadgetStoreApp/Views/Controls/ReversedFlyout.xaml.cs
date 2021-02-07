@@ -135,6 +135,10 @@ namespace GadgetStoreApp
                             await Task.Delay(80);
                         await AnimateToOpen();
                     }
+                    else
+                    {
+                        await CloseAsync();
+                    }
                     break;
             }
         }
