@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="GadgetStoreApp.Maui.Views.Pages.HomePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GadgetStoreApp.Maui.Views.Pages"
+             xmlns:core="clr-namespace:GadgetStoreApp.Core;assembly=GadgetStoreApp.Core"
+             xmlns:controls="clr-namespace:GadgetStoreApp.Maui.Views.Controls">
+    
+    <!--
+        https://github.com/dotnet/maui/issues/9485
+    
+        CarouselView and items of main CollectionView do not show on Windows
+    -->
+    
+    <Grid>
+        <Image
+            x:Name="backgroundImage" VerticalOptions="Start" 
+            Source="background.jpg"
+            Aspect="AspectFill"/>
+        
+        <Grid
+            Padding="{x:Static controls:AppBar.AppBarPadding}"
+            RowSpacing="0" RowDefinitions="auto,*"
+            BackgroundColor="Transparent">
+
+            <BoxView x:Name="whiteBoxView" Color="White" CornerRadius="28,28,0,0" Grid.Row="1"
+                     VerticalOptions="Start"/>
+
+            <Border Grid.Row="1"
+                    StrokeThickness="0"
+                    BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="28,28,0,0"/>
+                </Border.StrokeShape>
+                <CollectionView
+                    Grid.Row="1" x:Name="collectionView" ItemsSource="{Binding AllProducts}"
+                    Scrolled="CollectionViewScrolled"
+                    ItemSizingStrategy="MeasureFirstItem">
+                    <CollectionView.Header>
+                        <StackLayout x:Name="headerStack" Spacing="0">
+                            <StackLayout x:Name="textStack" Margin="24,0,0,0" VerticalOptions="Start" HeightRequest="100"
+                                     Spacing="0">
+                                <Label
+                                    x:Name="firstText" Text="COLLECTION 2020" TextColor="{DynamicResource DetailColor}"
+                                    FontSize="16" HeightRequest="24"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    x:Name="secondText" Text="Erupt Gadgets" TextColor="White"
+                                    FontSize="28" HeightRequest="40"
+                                    VerticalOptions="Start"/>
+                                <Label
+                                    x:Name="thirdText" Text="Technical features including industry." TextColor="White"
+                                    FontSize="14" FontFamily="RegularFont" HeightRequest="20"
+                                    VerticalOptions="Start"/>
+                            </StackLayout>
+
+                            <Grid
+                                Margin="0,40,0,0"
+                                RowDefinitions="22,120,22,130,22">
+                                <Grid.Resources>
+                                    <Style TargetType="{x:Type Label}" x:Key="TitleLabelStyle">
+                                        <Setter Property="TextColor" Value="Black"/>
+                                        <Setter Property="HorizontalOptions" Value="Start"/>
+                                        <Setter Property="FontSize" Value="17"/>
+                                    </Style>
+                                </Grid.Resources>
+
+                                <Label Margin="24,0,0,0" Text="Popular" Grid.Row="0" Style="{StaticResource TitleLabelStyle}"/>
+                                <Label Margin="24,0,0,0" Text="Best Selling" Grid.Row="2" Style="{StaticResource TitleLabelStyle}"/>
+                                <Label Margin="24,0,0,0" Text="All Products" Grid.Row="4" Style="{StaticResource TitleLabelStyle}"/>
+
+                                <CollectionView
+                                    Grid.Row="1" VerticalOptions="Start" HeightRequest="120"
+                                    ItemsSource="{Binding AllProducts}">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="2"/>
+                                    </CollectionView.ItemsLayout>
+
+                                    <CollectionView.Header>
+                                        <BoxView Color="Transparent" WidthRequest="24"/>
+                                    </CollectionView.Header>
+
+                                    <CollectionView.Footer>
+                                        <BoxView Color="Transparent" WidthRequest="24"/>
+                                    </CollectionView.Footer>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="{x:Type core:Product}">
+                                            <Grid
+                                                VerticalOptions="Start" HorizontalOptions="Start" 
+                                                HeightRequest="120" WidthRequest="120">
+                                                <Grid
+                                                    Padding="0" VerticalOptions="Start" HorizontalOptions="Start"
+                                                    HeightRequest="72" WidthRequest="72">
+                                                    <BoxView CornerRadius="10" Color="{DynamicResource CardBackgroundColor}"/>
+                                                    <StackLayout Margin="8">
+                                                        <Label Text="{Binding CurrentPrice, StringFormat='${0}'}" TextColor="White" FontSize="16"/>
+                                                        <Label Text="{Binding PreviousPrice, StringFormat='${0}'}" TextDecorations="Strikethrough" TextColor="{DynamicResource DetailColor}" FontSize="10"/>
+                                                    </StackLayout>
+                                                </Grid>
+
+                                                <Border
+                                                    Margin="10" StrokeThickness="0"
+                                                    VerticalOptions="End" HorizontalOptions="End">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="10"/>
+                                                    </Border.StrokeShape>
+                                                    <Image
+                                                        HeightRequest="72" WidthRequest="72" 
+                                                        Source="{Binding Thumbnail}"/>
+                                                </Border>
+
+                                                <BoxView
+                                                    VerticalOptions="End" HorizontalOptions="Start"
+                                                    HeightRequest="12" WidthRequest="12" CornerRadius="6"
+                                                    Margin="20,30" Color="{Binding ., Converter={StaticResource RandomColorConverter}}"/>
+
+                                                <Grid
+                                                    VerticalOptions="End" HorizontalOptions="End"
+                                                    HeightRequest="20" WidthRequest="20" Margin="0,0,22,82">
+                                                    <BoxView
+                                                        CornerRadius="6,6,0,0"
+                                                        Color="{Binding ., Converter={StaticResource RandomColorConverter}}"/>
+                                                    <Label
+                                                        Text="{Binding Discount, StringFormat='{0}%'}"
+                                                        TextColor="White" HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        FontSize="7" Margin="0,4,0,0"/>
+                                                </Grid>
+
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type core:HomePageViewModel}}, Path=ProductSelectedCommand}"
+                                                        CommandParameter="{Binding .}"/>
+                                                </Grid.GestureRecognizers>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                                <CarouselView
+                                    Grid.Row="3"
+                                    VerticalOptions="Start"
+                                    HeightRequest="120"
+                                    ItemsSource="{Binding BestSellingProducts}"
+                                    PeekAreaInsets="24" Margin="0,0,0,10"
+                                    Loop="False">
+                                    <CarouselView.ItemTemplate>
+                                        <DataTemplate x:DataType="{x:Type core:Product}">
+                                            <Border
+                                                StrokeThickness="0"
+                                                Margin="0,0,10,0">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="16"/>
+                                                </Border.StrokeShape>
+                                                <Grid
+                                                    HeightRequest="120" ColumnDefinitions="auto,*,*"
+                                                    BackgroundColor="{DynamicResource CardBackgroundColor}">
+                                                    <Border
+                                                        Margin="10" StrokeThickness="0"
+                                                        VerticalOptions="Start" HorizontalOptions="Start">
+                                                        <Border.StrokeShape>
+                                                            <RoundRectangle CornerRadius="10"/>
+                                                        </Border.StrokeShape>
+                                                        <Image
+                                                            HeightRequest="100" WidthRequest="100"
+                                                            Source="{Binding Thumbnail}"/>
+                                                    </Border>
+
+                                                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                                        <StackLayout.Resources>
+                                                            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseLabelStyle}">
+                                                                <Setter Property="TextColor" Value="White"/>
+                                                            </Style>
+                                                        </StackLayout.Resources>
+                                                        <Label Text="{Binding Name}" FontSize="18"/>
+                                                        <Label Text="{Binding ShortDescription}" FontFamily="RegularFont" FontSize="12" />
+                                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                                            <Label Text="$" FontSize="18" VerticalTextAlignment="Start" VerticalOptions="Start" Margin="0,6,2,0"/>
+                                                            <Label Text="{Binding CurrentPrice}" FontSize="36" VerticalTextAlignment="Start" VerticalOptions="Start"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+
+                                                    <!--<local:RatingView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Start"
+                                                              Margin="0,4,22,0"
+                                                              Rating="{Binding Rating}" Path="{DynamicResource StarsPath}" 
+                                                              FrontColor="{DynamicResource DetailColor}" BackColor="{DynamicResource LightCardBackgroundColor}"/>-->
+
+                                                    <Grid
+                                                        Grid.Column="2"
+                                                        VerticalOptions="End" HorizontalOptions="End" 
+                                                        HeightRequest="40" WidthRequest="40"
+                                                        Margin="0,0,25,15">
+                                                        <BoxView CornerRadius="12" Color="{DynamicResource BackgroundColor}"/>
+                                                        <!--<local:SvgView Path="{StaticResource NextArrowPath}" Color="#ffffff"
+                                                               VerticalOptions="Center" HorizontalOptions="Center"
+                                                               HeightRequest="12" WidthRequest="12"/>-->
+                                                    </Grid>
+
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type core:HomePageViewModel}}, Path=ProductSelectedCommand}"
+                                                                      CommandParameter="{Binding .}"/>
+                                                    </Grid.GestureRecognizers>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CarouselView.ItemTemplate>
+                                </CarouselView>
+                            </Grid>
+                        </StackLayout>
+                    </CollectionView.Header>
+
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type core:Product}">
+                            <ContentView
+                                Padding="0">
+                                <Grid
+                                    VerticalOptions="Start"
+                                    HeightRequest="200"
+                                    Margin="24,8">
+                                    <Grid Padding="0" VerticalOptions="Fill" Margin="0,0,30,30">
+                                        <BoxView CornerRadius="16" Color="{DynamicResource CardBackgroundColor}"/>
+                                        <StackLayout Margin="10,10,10,60">
+                                            <StackLayout.Resources>
+                                                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseLabelStyle}">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                                </Style>
+                                            </StackLayout.Resources>
+                                            <Label Text="{Binding Name}" FontSize="15"/>
+                                            <Label Text="{Binding ShortDescription}" FontFamily="RegularFont" FontSize="10"/>
+                                            <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="Start" HeightRequest="30">
+                                                <Label Text="$" FontSize="15" VerticalTextAlignment="Start" VerticalOptions="Start" Margin="0,2,2,0"/>
+                                                <Label Text="{Binding CurrentPrice}" FontSize="25" VerticalTextAlignment="Start" VerticalOptions="Start"/>
+                                            </StackLayout>
+                                            <!--<local:RatingView HorizontalOptions="Fill" VerticalOptions="EndAndExpand" HeightRequest="20"
+                                                          Margin="2,0"
+                                                          Rating="{Binding Rating}" Path="{DynamicResource StarsPath}" 
+                                                          FrontColor="{DynamicResource DetailColor}" BackColor="{DynamicResource LightCardBackgroundColor}"/>-->
+                                        </StackLayout>
+
+                                        <Grid
+                                            VerticalOptions="End" HorizontalOptions="Start" 
+                                            HeightRequest="40" WidthRequest="40" Margin="10">
+                                            <BoxView CornerRadius="12" Color="{DynamicResource BackgroundColor}"/>
+                                            <!--<local:SvgView Path="{StaticResource NextArrowPath}" Color="#ffffff"
+                                                       VerticalOptions="Center" HorizontalOptions="Center"
+                                                       HeightRequest="12" WidthRequest="12"/>-->
+                                        </Grid>
+                                    </Grid>
+
+                                    <Border
+                                        Margin="10" StrokeThickness="0"
+                                        VerticalOptions="End" HorizontalOptions="End">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+                                        <Image
+                                            HeightRequest="72" WidthRequest="72"
+                                            Source="{Binding Thumbnail}"/>
+                                    </Border>
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type core:HomePageViewModel}}, Path=ProductSelectedCommand}"
+                                                          CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

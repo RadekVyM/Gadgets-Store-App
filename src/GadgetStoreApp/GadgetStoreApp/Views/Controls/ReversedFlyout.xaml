@@ -53,7 +53,6 @@
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-
                     </StackLayout>
                     <BoxView x:Name="lineBoxView" Grid.Row="2" BackgroundColor="{DynamicResource LightBackgroundColour}"
                              VerticalOptions="Start" HorizontalOptions="Start" 
