@@ -9,6 +9,8 @@
                    HorizontalOptions="Center"
                    TextColor="Purple"
                    VerticalOptions="Center"/>
+
+            <Button Margin="0,100,0,0" Text="Back" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

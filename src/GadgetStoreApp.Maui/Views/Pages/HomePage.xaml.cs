@@ -25,6 +25,7 @@ namespace GadgetStoreApp.Maui.Views.Pages
             whiteBoxView.HeightRequest = collectionView.Height + whiteBoxView.CornerRadius.BottomLeft;
             whiteBoxView.TranslationY = defaultWhiteBoxViewOffset - verticalOffset < 0 ? 0 : defaultWhiteBoxViewOffset - verticalOffset;
             textStack.Margin = new Thickness(24, defaultWhiteBoxViewOffset - textStack.HeightRequest - 10, 0, 0);
+            headerStack.HeightRequest = textStack.Margin.VerticalThickness + 456; // Because of a bug on iOS
 
             UpdateTextOpacities();
         }
@@ -52,6 +53,13 @@ namespace GadgetStoreApp.Maui.Views.Pages
             firstText.Opacity = firstOpacity;
             secondText.Opacity = secondOpacity;
             thirdText.Opacity = thirdOpacity;
+        }
+
+        private void ProductContentButtonClicked(object sender, EventArgs e)
+        {
+            var view = sender as View;
+
+            viewModel.ProductSelectedCommand?.Execute(view.BindingContext);
         }
     }
 }

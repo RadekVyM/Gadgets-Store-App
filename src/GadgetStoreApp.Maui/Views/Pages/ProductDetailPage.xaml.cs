@@ -11,5 +11,10 @@ namespace GadgetStoreApp.Maui.Views.Pages
             InitializeComponent();
             BindingContext = viewModel = productDetailPageViewModel;
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("..");
+        }
     }
 }
