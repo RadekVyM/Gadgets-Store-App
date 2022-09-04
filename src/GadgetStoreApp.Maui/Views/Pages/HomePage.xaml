@@ -239,10 +239,13 @@
                                                             </StackLayout>
                                                         </StackLayout>
 
-                                                        <!--<local:RatingView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Start"
-                                                              Margin="0,4,22,0"
-                                                              Rating="{Binding Rating}" Path="{DynamicResource StarsPath}" 
-                                                              FrontColor="{DynamicResource DetailColor}" BackColor="{DynamicResource LightCardBackgroundColor}"/>-->
+                                                        <controls:RatingControl
+                                                            Grid.Column="2"
+                                                            HorizontalOptions="Fill" VerticalOptions="Start"
+                                                            Margin="0,22,22,0"
+                                                            Rating="{Binding Rating}"
+                                                            StarColor="{DynamicResource DetailColor}"
+                                                            Background="Transparent"/>
 
                                                         <Grid
                                                             Grid.Column="2"
@@ -251,9 +254,10 @@
                                                             Margin="0,0,25,15"
                                                             CompressedLayout.IsHeadless="True">
                                                             <BoxView CornerRadius="12" Color="{DynamicResource BackgroundColor}"/>
-                                                            <!--<local:SvgView Path="{StaticResource NextArrowPath}" Color="#ffffff"
-                                                               VerticalOptions="Center" HorizontalOptions="Center"
-                                                               HeightRequest="12" WidthRequest="12"/>-->
+                                                            <simpleCore:Icon
+                                                                Source="right_arrow_icon.png" TintColor="White"
+                                                                VerticalOptions="Center" HorizontalOptions="Center"
+                                                                HeightRequest="12" WidthRequest="12"/>
                                                         </Grid>
                                                     </Grid>
                                                 </Border>
@@ -304,10 +308,13 @@
                                                         <Label Text="$" FontSize="15" VerticalTextAlignment="Start" VerticalOptions="Start" Margin="0,2,2,0"/>
                                                         <Label Text="{Binding CurrentPrice}" FontSize="25" VerticalTextAlignment="Start" VerticalOptions="Start"/>
                                                     </StackLayout>
-                                                    <!--<local:RatingView HorizontalOptions="Fill" VerticalOptions="EndAndExpand" HeightRequest="20"
-                                                          Margin="2,0"
-                                                          Rating="{Binding Rating}" Path="{DynamicResource StarsPath}" 
-                                                          FrontColor="{DynamicResource DetailColor}" BackColor="{DynamicResource LightCardBackgroundColor}"/>-->
+                                                    <controls:RatingControl
+                                                        HorizontalOptions="Fill" VerticalOptions="EndAndExpand"
+                                                        HeightRequest="20"
+                                                        Margin="2,0"
+                                                        Rating="{Binding Rating}" 
+                                                        StarColor="{DynamicResource DetailColor}" 
+                                                        Background="Transparent"/>
                                                 </StackLayout>
 
                                                 <Grid
@@ -316,9 +323,10 @@
                                                     Margin="10"
                                                     CompressedLayout.IsHeadless="True">
                                                     <BoxView CornerRadius="12" Color="{DynamicResource BackgroundColor}"/>
-                                                    <!--<local:SvgView Path="{StaticResource NextArrowPath}" Color="#ffffff"
-                                                       VerticalOptions="Center" HorizontalOptions="Center"
-                                                       HeightRequest="12" WidthRequest="12"/>-->
+                                                    <simpleCore:Icon
+                                                        Source="right_arrow_icon.png" TintColor="White"
+                                                        VerticalOptions="Center" HorizontalOptions="Center"
+                                                        HeightRequest="12" WidthRequest="12"/>
                                                 </Grid>
                                             </Grid>
 

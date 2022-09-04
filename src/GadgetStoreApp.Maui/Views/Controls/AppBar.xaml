@@ -2,10 +2,33 @@
 <ContentView x:Class="GadgetStoreApp.Maui.Views.Controls.AppBar"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:GadgetStoreApp.Maui.Views.Controls">
+             xmlns:local="clr-namespace:GadgetStoreApp.Maui.Views.Controls"
+             xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core">
 
     <Grid
         HeightRequest="80">
+
+        <simpleCore:ContentButton
+            x:Name="menuButton"
+            HorizontalOptions="Start" VerticalOptions="Center">
+            <simpleCore:Icon
+                x:Name="menuIcon"
+                Source="menu_icon.png"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                HeightRequest="18" WidthRequest="18"
+                Margin="24"/>
+        </simpleCore:ContentButton>
+
+        <simpleCore:ContentButton
+            x:Name="backButton"
+            HorizontalOptions="Start" VerticalOptions="Center">
+            <simpleCore:Icon
+                x:Name="backIcon"
+                Source="back_icon.png"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                HeightRequest="18" WidthRequest="18"
+                Margin="24"/>
+        </simpleCore:ContentButton>
 
         <!--<local:SvgView HorizontalOptions="Start" VerticalOptions="Start" Path="{StaticResource BackArrowPath}" Colour="#000000"
                         HeightRequest="18" WidthRequest="18" Margin="24"/>-->
@@ -14,6 +37,18 @@
             Source="logo.png"
             Aspect="AspectFit"
             WidthRequest="100" HeightRequest="20"/>
+
+        <simpleCore:ContentButton
+            x:Name="searchButton"
+            HorizontalOptions="End" VerticalOptions="Center">
+            <simpleCore:Icon
+                x:Name="searchIcon"
+                Source="search_icon.png"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                HeightRequest="18" WidthRequest="18"
+                Margin="24"/>
+        </simpleCore:ContentButton>
+
         <!--<local:SvgView HorizontalOptions="End" VerticalOptions="Start" Path="{StaticResource SearchPath}" Colour="#000000"
                         HeightRequest="18" WidthRequest="18" Margin="24"/>
         <BoxView HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="Transparent" 

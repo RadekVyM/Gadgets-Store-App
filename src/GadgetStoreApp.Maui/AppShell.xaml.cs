@@ -11,5 +11,14 @@ namespace GadgetStoreApp.Maui
 
             Routing.RegisterRoute(PageEnum.ProductDetailPage.ToString(), typeof(ProductDetailPage));
         }
+
+        private void AppBarMenuClicked(object sender, EventArgs e)
+        {
+        }
+
+        private void AppBarBackClicked(object sender, EventArgs e)
+        {
+            GoToAsync("..");
+        }
     }
 }

@@ -11,6 +11,34 @@
     
     x:Name="thisShell">
 
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="SimplePageStates">
+            <VisualState x:Name="SimplePageState">
+                <VisualState.Setters>
+                    <Setter TargetName="appBar" Property="controls:AppBar.BackgroundType" Value="Light"/>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="SimplePageState.HomePage">
+                <VisualState.Setters>
+                    <Setter TargetName="appBar" Property="controls:AppBar.BackgroundType" Value="Dark"/>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+        
+        <VisualStateGroup x:Name="SimplePageTypeStates">
+            <VisualState x:Name="SimplePageTypeState.RegisteredPage">
+                <VisualState.Setters>
+                    <Setter TargetName="appBar" Property="controls:AppBar.State" Value="Back"/>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="SimplePageTypeState.RootPage">
+                <VisualState.Setters>
+                    <Setter TargetName="appBar" Property="controls:AppBar.State" Value="Root"/>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
     <ShellContent
         Title="Home"
         Icon="house_icon.png"
@@ -123,7 +151,11 @@
 
             <Grid x:Name="pageContainer">
                 <simpleShell:SimpleNavigationHost/>
-                <controls:AppBar VerticalOptions="Start" HorizontalOptions="Fill"/>
+                <controls:AppBar
+                    x:Name="appBar"
+                    VerticalOptions="Start" HorizontalOptions="Fill"
+                    State="Root"
+                    MenuClicked="AppBarMenuClicked" BackClicked="AppBarBackClicked"/>
             </Grid>
         </Grid>
     </simpleShell:SimpleShell.Content>
