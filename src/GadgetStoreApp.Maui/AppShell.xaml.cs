@@ -111,6 +111,11 @@ namespace GadgetStoreApp.Maui
 
         private void PageContainerSizeChanged(object sender, EventArgs e)
         {
+            var insets = this.Window.GetSafeAreaInsets();
+
+            appBar.Margin = insets;
+            menuGrid.Margin = insets;
+
             if (!isMenuClosed)
                 CloseMenu();
         }

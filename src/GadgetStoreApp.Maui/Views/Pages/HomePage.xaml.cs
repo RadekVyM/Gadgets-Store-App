@@ -1,4 +1,5 @@
 ﻿using GadgetStoreApp.Core;
+using GadgetStoreApp.Maui.Extensions;
 using GadgetStoreApp.Maui.Views.Controls;
 
 namespace GadgetStoreApp.Maui.Views.Pages
@@ -8,7 +9,7 @@ namespace GadgetStoreApp.Maui.Views.Pages
         private const int HeaderHeight = 486;
         
         private double verticalOffset = 0;
-        private double defaultWhiteBoxViewOffset => backgroundImage.HeightRequest - whiteBoxView.CornerRadius.TopLeft - AppBar.AppBarPadding.Top;
+        private double defaultWhiteBoxViewOffset => backgroundImage.HeightRequest - whiteBoxView.CornerRadius.TopLeft - rootContentGrid.Padding.Top;
         private float density => (float)DeviceDisplay.MainDisplayInfo.Density;
 
         private readonly IHomePageViewModel viewModel;
@@ -23,6 +24,11 @@ namespace GadgetStoreApp.Maui.Views.Pages
 
         private void HomePageSizeChanged(object sender, EventArgs e)
         {
+            var insets = this.Window.GetSafeAreaInsets();
+
+            rootContentGrid.Padding = new Thickness(0, insets.Top + AppBar.AppBarPadding.Top, 0, 0);
+            collectionView.Margin = new Thickness(insets.Left, 0, insets.Right, 0);
+
             backgroundImage.HeightRequest = Height * 0.5d;
             whiteBoxView.HeightRequest = collectionView.Height + whiteBoxView.CornerRadius.BottomLeft;
             whiteBoxView.TranslationY = defaultWhiteBoxViewOffset - verticalOffset < 0 ? 0 : defaultWhiteBoxViewOffset - verticalOffset;

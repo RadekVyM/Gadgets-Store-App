@@ -63,7 +63,7 @@
             Aspect="AspectFill"/>
         
         <Grid
-            Padding="{x:Static controls:AppBar.AppBarPadding}"
+            x:Name="rootContentGrid"
             RowSpacing="0" RowDefinitions="auto,*"
             BackgroundColor="Transparent">
 

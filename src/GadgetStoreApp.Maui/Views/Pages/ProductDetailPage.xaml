@@ -18,11 +18,12 @@
     <!--<ScrollView
         Margin="{x:Static controls:AppBar.AppBarPadding}">-->
     <Grid
-        Margin="{x:Static controls:AppBar.AppBarPadding}"
-        RowSpacing="0" RowDefinitions="*,325"
+        x:Name="rootGrid"
+        RowSpacing="0" RowDefinitions="*,340"
         CompressedLayout.IsHeadless="True">
 
         <Grid
+            x:Name="imagesRootGrid"
             RowDefinitions="35,*,20"
             CompressedLayout.IsHeadless="True">
             <Label
@@ -100,11 +101,13 @@
                 Margin="0,0,0,10"/>
         </Grid>
 
+        <BoxView CornerRadius="26,26,0,0" Grid.Row="1" Color="{DynamicResource CardBackgroundColor}"/>
+        
         <Grid
+            x:Name="specsRootGrid"
             Grid.Row="1"
             RowDefinitions="60,50,*,120"
             CompressedLayout.IsHeadless="True">
-            <BoxView CornerRadius="26,26,0,0" Grid.RowSpan="4" Color="{DynamicResource CardBackgroundColor}"/>
 
             <Label
                 Text="Features" TextColor="White"  FontSize="24"

@@ -1,4 +1,6 @@
 ﻿using GadgetStoreApp.Core;
+using GadgetStoreApp.Maui.Extensions;
+using GadgetStoreApp.Maui.Views.Controls;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace GadgetStoreApp.Maui.Views.Pages
@@ -53,6 +55,12 @@ namespace GadgetStoreApp.Maui.Views.Pages
 
         private void ProductDetailPageSizeChanged(object sender, EventArgs e)
         {
+            var insets = this.Window.GetSafeAreaInsets();
+
+            rootGrid.Margin = new Thickness(0, insets.Top + AppBar.AppBarPadding.Top, 0, 0);
+            imagesRootGrid.Margin = new Thickness(insets.Left, 0, insets.Right, 0);
+            specsRootGrid.Margin = new Thickness(insets.Left, 0, insets.Right, insets.Bottom);
+
             OnPropertyChanged(nameof(ImageWidth));
         }
 
