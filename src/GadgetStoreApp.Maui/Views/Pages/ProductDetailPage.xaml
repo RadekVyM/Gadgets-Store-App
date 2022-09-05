@@ -70,11 +70,16 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type x:String}">
                         <Grid Padding="0" CompressedLayout.IsHeadless="True">
-                            <Image
-                                Source="{Binding ., Converter={StaticResource ImageSourceConverter}}" Aspect="AspectFill"
-                                Margin="10"
-                                WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type local:ProductDetailPage}}, Path=ImageWidth}"
-                                Clip="{Binding Source={RelativeSource AncestorType={x:Type local:ProductDetailPage}}, Path=ImageClip}"/>
+                            <Border
+                                Margin="10">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="24"/>
+                                </Border.StrokeShape>
+                                <Image
+                                    Source="{Binding .}" Aspect="AspectFill"
+                                    WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type local:ProductDetailPage}}, Path=ImageWidth}"
+                                    Clip="{Binding Source={RelativeSource AncestorType={x:Type local:ProductDetailPage}}, Path=ImageClip}"/>
+                            </Border>
 
                             <Label
                                 Text="+" TextColor="White"

@@ -54,6 +54,10 @@
                 </PathFigure>
             </PathFigureCollection>
         </PathGeometry>
+
+        <Shadow
+            x:Key="ImageShadow"
+            Brush="Gray" Opacity="0.5" Offset="0, 0" Radius="6"/>
     </ContentPage.Resources>
 
     <Grid CompressedLayout.IsHeadless="True">
@@ -159,7 +163,8 @@
 
                                                     <Border
                                                         Margin="10" StrokeThickness="0"
-                                                        VerticalOptions="End" HorizontalOptions="End">
+                                                        VerticalOptions="End" HorizontalOptions="End"
+                                                        Shadow="{StaticResource ImageShadow}">
                                                         <Border.StrokeShape>
                                                             <RoundRectangle CornerRadius="10"/>
                                                         </Border.StrokeShape>
@@ -229,7 +234,7 @@
                                                             Grid.Column="1" VerticalOptions="Center"
                                                             CompressedLayout.IsHeadless="True">
                                                             <StackLayout.Resources>
-                                                                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseLabelStyle}">
+                                                                <Style TargetType="{x:Type Label}">
                                                                     <Setter Property="TextColor" Value="White"/>
                                                                 </Style>
                                                             </StackLayout.Resources>
@@ -301,7 +306,7 @@
                                                     Margin="10,10,10,60"
                                                     CompressedLayout.IsHeadless="True">
                                                     <StackLayout.Resources>
-                                                        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseLabelStyle}">
+                                                        <Style TargetType="{x:Type Label}">
                                                             <Setter Property="TextColor" Value="White"/>
                                                         </Style>
                                                     </StackLayout.Resources>
@@ -335,7 +340,8 @@
 
                                             <Border
                                                 Margin="10" StrokeThickness="0"
-                                                VerticalOptions="End" HorizontalOptions="End">
+                                                VerticalOptions="End" HorizontalOptions="End"
+                                                Shadow="{StaticResource ImageShadow}">
                                                 <Border.StrokeShape>
                                                     <RoundRectangle CornerRadius="10"/>
                                                 </Border.StrokeShape>
