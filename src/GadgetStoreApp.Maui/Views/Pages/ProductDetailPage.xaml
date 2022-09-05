@@ -2,15 +2,226 @@
 <ContentPage x:Class="GadgetStoreApp.Maui.Views.Pages.ProductDetailPage"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:GadgetStoreApp.Maui.Views.Pages">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to .NET MAUI!!!"
-                   HorizontalOptions="Center"
-                   TextColor="Purple"
-                   VerticalOptions="Center"/>
+             xmlns:local="clr-namespace:GadgetStoreApp.Maui.Views.Pages"
+             xmlns:core="clr-namespace:GadgetStoreApp.Core;assembly=GadgetStoreApp.Core"
+             xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core"
+             xmlns:controls="clr-namespace:GadgetStoreApp.Maui.Views.Controls"
+             
+             x:DataType="{x:Type core:ProductDetailPageViewModel}">
 
-            <Button Margin="0,100,0,0" Text="Back" Clicked="Button_Clicked"/>
-        </StackLayout>
-    </ContentPage.Content>
+    <ContentPage.Resources>
+        <Shadow
+            x:Key="ImageDetailShadow"
+            Brush="Black" Opacity="0.5"/>
+    </ContentPage.Resources>
+    
+    <!--<ScrollView
+        Margin="{x:Static controls:AppBar.AppBarPadding}">-->
+    <Grid
+        Margin="{x:Static controls:AppBar.AppBarPadding}"
+        RowSpacing="0" RowDefinitions="*,325"
+        CompressedLayout.IsHeadless="True">
+
+        <Grid
+            RowDefinitions="35,*,20"
+            CompressedLayout.IsHeadless="True">
+            <Label
+                Text="{Binding Product.Name}" TextColor="#000000" FontSize="22"
+                Margin="24,0,0,0"
+                HorizontalOptions="Start" VerticalOptions="Start"/>
+
+            <simpleCore:ContentButton
+                Clicked="FavoriteButtonClicked"
+                HorizontalOptions="End" VerticalOptions="Start"
+                Margin="0,0,30,0">
+                <simpleCore:Icon
+                    Source="heart_icon.png"
+                    TintColor="#e6e6e6"
+                    HeightRequest="22" WidthRequest="22">
+                    <simpleCore:Icon.Triggers>
+                        <DataTrigger TargetType="{x:Type simpleCore:Icon}" Binding="{Binding Favorite}">
+                            <DataTrigger.Value>
+                                <x:Boolean>True</x:Boolean>
+                            </DataTrigger.Value>
+                            <Setter Property="TintColor" Value="{DynamicResource BackgroundColor}"/>
+                        </DataTrigger>
+                    </simpleCore:Icon.Triggers>
+                </simpleCore:Icon>
+            </simpleCore:ContentButton>
+
+            <CollectionView
+                x:Name="imagesCollectionView"
+                Grid.Row="1"
+                ItemsSource="{Binding Product.Images}"
+                Scrolled="ImagesCollectionViewScrolled">
+                <CollectionView.Header>
+                    <BoxView Color="Transparent" WidthRequest="{OnPlatform 14, Android=4}"/>
+                </CollectionView.Header>
+
+                <CollectionView.Footer>
+                    <BoxView Color="Transparent" WidthRequest="{OnPlatform 14, Android=4}"/>
+                </CollectionView.Footer>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <Grid Padding="0" CompressedLayout.IsHeadless="True">
+                            <Image
+                                Source="{Binding ., Converter={StaticResource ImageSourceConverter}}" Aspect="AspectFill"
+                                Margin="10"
+                                WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type local:ProductDetailPage}}, Path=ImageWidth}"
+                                Clip="{Binding Source={RelativeSource AncestorType={x:Type local:ProductDetailPage}}, Path=ImageClip}"/>
+
+                            <Label
+                                Text="+" TextColor="White"
+                                FontSize="36" FontFamily="RegularFont"
+                                HorizontalOptions="Center" VerticalOptions="Center"
+                                Shadow="{StaticResource ImageDetailShadow}"/>
+
+                            <Label
+                                Text="EXPLORE " FontSize="15" TextColor="White"
+                                HorizontalOptions="Center" VerticalOptions="End"
+                                Margin="0,0,0,25"
+                                Shadow="{StaticResource ImageDetailShadow}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <controls:CustomIndicatorView
+                x:Name="indicatorView"
+                Grid.Row="2"
+                VerticalOptions="Center"
+                Count="3"
+                HeightRequest="5"
+                Margin="0,0,0,10"/>
+        </Grid>
+
+        <Grid
+            Grid.Row="1"
+            RowDefinitions="60,50,*,120"
+            CompressedLayout.IsHeadless="True">
+            <BoxView CornerRadius="26,26,0,0" Grid.RowSpan="4" Color="{DynamicResource CardBackgroundColor}"/>
+
+            <Label
+                Text="Features" TextColor="White"  FontSize="24"
+                Margin="24,0,0,0"
+                HorizontalOptions="Start" VerticalOptions="End"/>
+            <HorizontalStackLayout
+                HorizontalOptions="End" VerticalOptions="End"
+                Margin="0,0,24,0" Spacing="10"
+                CompressedLayout.IsHeadless="True">
+                <controls:RatingControl
+                    Rating="{Binding Product.Rating}"
+                    HorizontalOptions="End" VerticalOptions="End"
+                    HeightRequest="21" WidthRequest="90"
+                    BackgroundColor="{DynamicResource CardBackgroundColor}"
+                    StarColor="{DynamicResource DetailColor}" DefaultColor="{DynamicResource LightCardBackgroundColor}"/>
+                <Label
+                    Text="{Binding Product.Rating, Converter={StaticResource DoubleToStringConverter}}" TextColor="White" FontSize="20" FontFamily="RegularFont"
+                    VerticalOptions="End"/>
+            </HorizontalStackLayout>
+
+            <Label
+                Grid.Row="1" Text="{Binding Product.LongDescription}" TextColor="White" FontSize="15" FontFamily="RegularFont"
+                VerticalOptions="Center" HorizontalOptions="Start" Margin="24,0"/>
+
+            <StackLayout
+                Grid.Row="2"
+                Orientation="Horizontal"
+                Spacing="12"
+                Margin="18,0"
+                BindableLayout.ItemsSource="{Binding Product.Features}"
+                CompressedLayout.IsHeadless="True">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type core:Feature}">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="6,0">
+                            <BoxView CornerRadius="16" Color="White"/>
+                            <VerticalStackLayout
+                                VerticalOptions="Center" HorizontalOptions="Center"
+                                Spacing="5"
+                                CompressedLayout.IsHeadless="True">
+                                <simpleCore:Icon
+                                    Source="{Binding FeatureEnum,Converter={StaticResource FeatureEnumToImageConverter}}"
+                                    TintColor="{DynamicResource DetailColor}"
+                                    VerticalOptions="End" HorizontalOptions="Center"
+                                    WidthRequest="22" HeightRequest="20"/>
+                                <Label
+                                    Text="{Binding Value}" TextColor="Black" FontSize="15"
+                                    VerticalOptions="Start" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+            <Grid
+                Grid.Row="3"
+                ColumnDefinitions="*, 70"
+                Margin="24,0"
+                VerticalOptions="Center"
+                ColumnSpacing="10"
+                HeightRequest="70"
+                CompressedLayout.IsHeadless="True">
+                <simpleCore:ContentButton
+                    Clicked="AddToCartButtonClicked">
+                    <Grid CompressedLayout.IsHeadless="True">
+                        <BoxView CornerRadius="20" Color="{DynamicResource BackgroundColor}"/>
+                        <BoxView
+                            x:Name="addToCartButtonOverlay" CornerRadius="20" Color="{DynamicResource LightBackgroundColor}"
+                            Opacity="0"/>
+                        <HorizontalStackLayout
+                            HorizontalOptions="Center" VerticalOptions="Center"
+                            Spacing="0"
+                            CompressedLayout.IsHeadless="True">
+                            <Label
+                                Text="$" FontSize="13"
+                                VerticalTextAlignment="Start" VerticalOptions="Start"
+                                Margin="0,5,2,0"
+                                TextColor="White"/>
+                            <Label
+                                Text="{Binding Product.CurrentPrice}" FontSize="28"
+                                VerticalTextAlignment="Start" VerticalOptions="Start"
+                                TextColor="White"/>
+                            <Label
+                                Text="+ Add To Cart" FontSize="18"
+                                TextColor="{DynamicResource DetailColor}"
+                                VerticalOptions="Center" VerticalTextAlignment="Center"
+                                Margin="16,0,0,0"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </simpleCore:ContentButton>
+
+                <simpleCore:ContentButton 
+                    Grid.Column="1"
+                    Clicked="CartButtonClicked">
+                    <Grid CompressedLayout.IsHeadless="True">
+                        <BoxView CornerRadius="20" Color="White"/>
+                        <Image
+                            Source="dark_basket_icon.png" Aspect="AspectFit"
+                            HorizontalOptions="Center" VerticalOptions="Center"
+                            HeightRequest="22" WidthRequest="22"/>
+                        <Grid
+                            Margin="24,-24,0,0"
+                            HeightRequest="16" WidthRequest="16"
+                            HorizontalOptions="Center" VerticalOptions="Center"
+                            CompressedLayout.IsHeadless="True">
+                            <BoxView
+                                Color="{DynamicResource BackgroundColor}"
+                                CornerRadius="5"/>
+                            <Label
+                                Text="{Binding CartCount}" FontSize="8" TextColor="White" 
+                                HorizontalOptions="Center" VerticalOptions="Center"
+                                HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                Margin="0.5,0.5,0,0"/>
+                        </Grid>
+                    </Grid>
+                </simpleCore:ContentButton>
+            </Grid>
+        </Grid>
+    </Grid>
+    <!--</ScrollView>-->
 </ContentPage>

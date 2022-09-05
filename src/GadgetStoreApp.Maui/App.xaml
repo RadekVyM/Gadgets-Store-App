@@ -12,6 +12,8 @@
             </ResourceDictionary.MergedDictionaries>
 
             <converters:RandomColorConverter x:Key="RandomColorConverter"/>
+            <converters:DoubleToStringConverter x:Key="DoubleToStringConverter"/>
+            <converters:FeatureEnumToImageConverter x:Key="FeatureEnumToImageConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

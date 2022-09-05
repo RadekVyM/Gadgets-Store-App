@@ -5,9 +5,11 @@ namespace GadgetStoreApp.Maui.Views.Pages
 {
     public partial class HomePage : ContentPage
     {
-        double verticalOffset = 0;
-        double defaultWhiteBoxViewOffset => backgroundImage.HeightRequest - whiteBoxView.CornerRadius.TopLeft - AppBar.AppBarPadding.Top;
-        float density => (float)DeviceDisplay.MainDisplayInfo.Density;
+        private const int HeaderHeight = 486;
+        
+        private double verticalOffset = 0;
+        private double defaultWhiteBoxViewOffset => backgroundImage.HeightRequest - whiteBoxView.CornerRadius.TopLeft - AppBar.AppBarPadding.Top;
+        private float density => (float)DeviceDisplay.MainDisplayInfo.Density;
 
         private readonly IHomePageViewModel viewModel;
 
@@ -25,7 +27,7 @@ namespace GadgetStoreApp.Maui.Views.Pages
             whiteBoxView.HeightRequest = collectionView.Height + whiteBoxView.CornerRadius.BottomLeft;
             whiteBoxView.TranslationY = defaultWhiteBoxViewOffset - verticalOffset < 0 ? 0 : defaultWhiteBoxViewOffset - verticalOffset;
             textStack.Margin = new Thickness(24, defaultWhiteBoxViewOffset - textStack.HeightRequest - 10, 0, 0);
-            headerStack.HeightRequest = textStack.Margin.VerticalThickness + 456; // Because of a bug on iOS
+            headerStack.HeightRequest = textStack.Margin.VerticalThickness + HeaderHeight; // Because of a bug on iOS
 
             UpdateTextOpacities();
         }

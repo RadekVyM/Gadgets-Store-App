@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.Shapes;
 
-namespace GadgetStoreApp.Maui
+namespace GadgetStoreApp.Maui.Extensions
 {
     // TODO: Move this to the SimpleToolkit
     public static class PathFExtensions
@@ -19,7 +19,7 @@ namespace GadgetStoreApp.Maui
 
         public static PathF TopLeftCornerMove(this PathF path, float strokeWidth = 0)
         {
-            path.Move(-path.Bounds.Left + (strokeWidth / 2f), -path.Bounds.Top + (strokeWidth / 2f));
+            path.Move(-path.Bounds.Left + strokeWidth / 2f, -path.Bounds.Top + strokeWidth / 2f);
             return path;
         }
 
@@ -27,10 +27,10 @@ namespace GadgetStoreApp.Maui
         {
             path.TopLeftCornerMove(strokeWidth);
 
-            float xOffset = (dirtyRect.Width / 2) - (path.Bounds.Width / 2);
-            float yOffset = (dirtyRect.Height / 2) - (path.Bounds.Height / 2);
+            float xOffset = dirtyRect.Width / 2 - path.Bounds.Width / 2;
+            float yOffset = dirtyRect.Height / 2 - path.Bounds.Height / 2;
 
-            path.Move(xOffset - (strokeWidth / 2f), yOffset - (strokeWidth / 2f));
+            path.Move(xOffset - strokeWidth / 2f, yOffset - strokeWidth / 2f);
 
             return path;
         }

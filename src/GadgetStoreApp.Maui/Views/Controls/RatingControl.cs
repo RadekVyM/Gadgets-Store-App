@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Controls.Shapes;
+﻿using GadgetStoreApp.Maui.Converters;
+using GadgetStoreApp.Maui.Extensions;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace GadgetStoreApp.Maui.Views.Controls
 {
@@ -12,7 +14,10 @@ namespace GadgetStoreApp.Maui.Views.Controls
 
         public static readonly BindableProperty StarColorProperty =
             BindableProperty.Create(nameof(StarColor), typeof(Color), typeof(RatingControl), Colors.Black, BindingMode.OneWay, propertyChanged: MyPropertyChanged);
-        
+
+        public static readonly BindableProperty DefaultColorProperty =
+            BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(RatingControl), Colors.Black, BindingMode.OneWay, propertyChanged: MyPropertyChanged);
+
         public static readonly BindableProperty RatingProperty =
             BindableProperty.Create(nameof(Rating), typeof(double), typeof(RatingControl), 0d, BindingMode.OneWay, propertyChanged: MyPropertyChanged);
 
@@ -26,6 +31,12 @@ namespace GadgetStoreApp.Maui.Views.Controls
         {
             get => (Color)GetValue(StarColorProperty);
             set => SetValue(StarColorProperty, value);
+        }
+
+        public Color DefaultColor
+        {
+            get => (Color)GetValue(DefaultColorProperty);
+            set => SetValue(DefaultColorProperty, value);
         }
 
 
@@ -47,6 +58,7 @@ namespace GadgetStoreApp.Maui.Views.Controls
 
             view.drawable.Rating = view.Rating;
             view.drawable.StarColor = view.StarColor;
+            view.drawable.DefaultColor = view.DefaultColor;
 
             view.Invalidate();
         }
@@ -60,23 +72,41 @@ namespace GadgetStoreApp.Maui.Views.Controls
 
             public double Rating { get; set; }
             public Color StarColor { get; set; }
+            public Color DefaultColor { get; set; }
             public PathGeometry StarGeometry { get; set; }
 
             public void Draw(ICanvas canvas, RectF dirtyRect)
             {
+                canvas.SaveState();
+
                 var starPath = StarGeometry.ParseToPathF();
                 var size = Math.Min(dirtyRect.Height, (dirtyRect.Width - spacingSum) / NumberOfStars);
 
                 starPath = starPath.AsUniformScaledPath(new RectF(0, 0, size, size));
                 starPath.Move((dirtyRect.Width - (size * NumberOfStars) - spacingSum) / 2, 0);
 
-                canvas.SetFillPaint(new SolidPaint(StarColor), new Rect(starPath.Bounds.X, 0, (spacingSum + (size * NumberOfStars)) * (Rating / NumberOfStars), dirtyRect.Height));
+                var paint = new LinearGradientPaint(new PaintGradientStop[]
+                {
+                    new PaintGradientStop((float)(Rating / NumberOfStars), StarColor),
+                    new PaintGradientStop((float)(Rating / NumberOfStars), DefaultColor),
+                    new PaintGradientStop(1, DefaultColor),
+                }, new Point(0, 0), new Point(1,0));
+
+                var paintBounds = new Rect(starPath.Bounds.X, 0, spacingSum + (size * NumberOfStars), dirtyRect.Height);
+
+                canvas.SetFillPaint(paint, paintBounds);
 
                 for (int i = 0; i < NumberOfStars; i++)
                 {
                     canvas.FillPath(starPath);
                     starPath.Move(size + spacing, 0);
+
+#if IOS || MACCATALYST
+                    canvas.SetFillPaint(paint, paintBounds);
+#endif
                 }
+
+                canvas.RestoreState();
             }
         }
     }

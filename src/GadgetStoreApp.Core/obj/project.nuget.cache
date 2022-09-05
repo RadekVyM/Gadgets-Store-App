@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BddQYJj9nQ2M88R4o2UeVVqF95e10I+1hjTzGaPJ5dDCwW3ZPymyvXEt8vxlZdEWy+l7VVEpDCtwRLSyF9AhXQ==",
+  "dgSpecHash": "ShHYug/PpM6D/EhcLp9lLmeyN+rKfHOiAWwnoiNeiijpwKt7+3ZT0bPvyPDouWk86ekm7BKB4J0AEJGE4iLzyQ==",
   "success": true,
   "projectFilePath": "C:\\Code\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp.Core\\GadgetStoreApp.Core.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\rvyme\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\rvyme\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -67,7 +67,7 @@
         Title="Favorites"
         Icon="heart_icon.png"
         ContentTemplate="{DataTemplate pages:FavoritesPage}"
-        Route="ProfilePage" />
+        Route="FavoritesPage" />
 
     <ShellContent
         Title="Help"
@@ -83,18 +83,24 @@
 
     <simpleShell:SimpleShell.Content>
         <Grid>
-            <BoxView Color="{DynamicResource BackgroundColor}"/>
+            <GraphicsView
+                x:Name="backgroundGraphicsView"
+                BackgroundColor="{DynamicResource BackgroundColor}"/>
+            
             <Grid
                 x:Name="menuGrid"
-                WidthRequest="300"
+                WidthRequest="200"
                 HorizontalOptions="Start"
                 RowSpacing="0" RowDefinitions="auto,*">
 
                 <simpleCore:ContentButton
                     Margin="24"
                     HorizontalOptions="Start" VerticalOptions="Start"
-                    HeightRequest="18" WidthRequest="18">
-                    <simpleCore:Icon TintColor="White"/>
+                    HeightRequest="18" WidthRequest="18"
+                    Clicked="CloseMenuButtonClicked">
+                    <simpleCore:Icon
+                        Source="cross_icon.png"
+                        TintColor="White"/>
                 </simpleCore:ContentButton>
 
                 <Grid
@@ -105,10 +111,12 @@
                     RowSpacing="24"
                     RowDefinitions="*,3*,*">
                     
-                    <StackLayout VerticalOptions="End" Spacing="0">
+                    <VerticalStackLayout
+                        VerticalOptions="End" Spacing="0"
+                        Margin="0,0,0,12">
                         <Label Text="Hello," FontSize="20" TextColor="White"/>
                         <Label Text="Jan Novák" FontSize="20" TextColor="White"/>
-                    </StackLayout>
+                    </VerticalStackLayout>
 
                     <ScrollView
                         Grid.Row="1"
@@ -120,14 +128,15 @@
                             BindableLayout.ItemsSource="{Binding Source={x:Reference thisShell}, Path=ShellContents}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate x:DataType="BaseShellItem">
-                                    <simpleCore:ContentButton>
-                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <simpleCore:ContentButton
+                                        Clicked="MenuItemButtonClicked">
+                                        <HorizontalStackLayout Spacing="10">
                                             <Image
-                                            Source="{Binding Icon}" Aspect="AspectFit"
-                                            HorizontalOptions="Start" VerticalOptions="Center"
-                                            HeightRequest="18" WidthRequest="18"/>
+                                                Source="{Binding Icon}" Aspect="AspectFit"
+                                                HorizontalOptions="Start" VerticalOptions="Center"
+                                                HeightRequest="18" WidthRequest="18"/>
                                             <Label Text="{Binding Title}" TextColor="White" FontSize="14" Margin="0,1,0,0"/>
-                                        </StackLayout>
+                                        </HorizontalStackLayout>
                                     </simpleCore:ContentButton>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -135,7 +144,7 @@
                     </ScrollView>
                     
                     <BoxView
-                        x:Name="lineBoxView" Grid.Row="2" BackgroundColor="{DynamicResource LightBackgroundColor}"
+                        x:Name="lineBoxView" Grid.Row="2" Color="{DynamicResource LightBackgroundColor}"
                         VerticalOptions="Start" HorizontalOptions="Start" 
                         HeightRequest="1.8" CornerRadius="0.9"/>
                     
@@ -156,6 +165,13 @@
                     VerticalOptions="Start" HorizontalOptions="Fill"
                     State="Root"
                     MenuClicked="AppBarMenuClicked" BackClicked="AppBarBackClicked"/>
+                <Rectangle
+                    x:Name="pageOverlay"
+                    Fill="Transparent">
+                    <Rectangle.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseMenuButtonClicked"/>
+                    </Rectangle.GestureRecognizers>
+                </Rectangle>
             </Grid>
         </Grid>
     </simpleShell:SimpleShell.Content>

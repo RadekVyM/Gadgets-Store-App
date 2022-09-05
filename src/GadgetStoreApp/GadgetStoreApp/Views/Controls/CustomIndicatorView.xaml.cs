@@ -59,7 +59,7 @@ namespace GadgetStoreApp
                     HorizontalOptions = LayoutOptions.Start,
                     VerticalOptions = LayoutOptions.Start,
                     IsVisible = true,
-                    BackgroundColor = App.Current.Resources.GetValue<Color>("CardBackgroundColour"),
+                    BackgroundColor = App.Current.Resources.GetValue<Color>("CardBackgroundColor"),
                     CornerRadius = new CornerRadius(Height / 2d)
                 }) ;
 
