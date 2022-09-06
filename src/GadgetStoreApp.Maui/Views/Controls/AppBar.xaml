@@ -6,7 +6,8 @@
              xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core">
 
     <Grid
-        HeightRequest="80">
+        HeightRequest="80"
+        CompressedLayout.IsHeadless="True">
 
         <simpleCore:ContentButton
             x:Name="menuButton"

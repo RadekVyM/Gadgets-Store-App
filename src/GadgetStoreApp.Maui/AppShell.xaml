@@ -82,7 +82,8 @@
         Route="SettingsPage" />
 
     <simpleShell:SimpleShell.Content>
-        <Grid>
+        <Grid
+            CompressedLayout.IsHeadless="True">
             <GraphicsView
                 x:Name="backgroundGraphicsView"
                 BackgroundColor="{DynamicResource BackgroundColor}"/>
@@ -91,7 +92,8 @@
                 x:Name="menuGrid"
                 WidthRequest="200"
                 HorizontalOptions="Start"
-                RowSpacing="0" RowDefinitions="auto,*">
+                RowSpacing="0" RowDefinitions="auto,*"
+                CompressedLayout.IsHeadless="True">
 
                 <simpleCore:ContentButton
                     Margin="24"
@@ -109,11 +111,13 @@
                     Margin="24,0,0,0"
                     VerticalOptions="Fill"
                     RowSpacing="24"
-                    RowDefinitions="*,3*,*">
+                    RowDefinitions="*,3*,*"
+                    CompressedLayout.IsHeadless="True">
                     
                     <VerticalStackLayout
                         VerticalOptions="End" Spacing="0"
-                        Margin="0,0,0,12">
+                        Margin="0,0,0,12"
+                        CompressedLayout.IsHeadless="True">
                         <Label Text="Hello," FontSize="20" TextColor="White"/>
                         <Label Text="Jan Novák" FontSize="20" TextColor="White"/>
                     </VerticalStackLayout>
@@ -123,14 +127,15 @@
                         HorizontalOptions="Fill" VerticalOptions="Start">
                         <StackLayout
                             x:Name="itemsStack"
-                            Spacing="25"
+                            Spacing="5"
                             VerticalOptions="Center" HorizontalOptions="Fill"
-                            BindableLayout.ItemsSource="{Binding Source={x:Reference thisShell}, Path=ShellContents}">
+                            BindableLayout.ItemsSource="{Binding Source={x:Reference thisShell}, Path=ShellContents}"
+                            CompressedLayout.IsHeadless="True">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate x:DataType="BaseShellItem">
                                     <simpleCore:ContentButton
                                         Clicked="MenuItemButtonClicked">
-                                        <HorizontalStackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="10" Padding="0,10">
                                             <Image
                                                 Source="{Binding Icon}" Aspect="AspectFit"
                                                 HorizontalOptions="Start" VerticalOptions="Center"
