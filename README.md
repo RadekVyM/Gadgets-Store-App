@@ -12,7 +12,7 @@
     <img src="./samples/gadget_store_home.png" data-canonical-src="./samples/gadget_store_home.png" width="500" />
 </p>
 
-The application was built using .NET MAUI APIs, and my library [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit).
+The application was built using .NET MAUI APIs and my [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit) library.
 
 ### Supported platforms
 These are all the platforms the app works on:
@@ -34,11 +34,11 @@ These are all the platforms the app works on:
 
 ### Features
 
-- Use of [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit) library
+- Use of my [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit) library
     - `SimpleShell`
     - `Icon` control
     - `ContentButton`
-- Reversed flyout, sliding menu... call it as you want
+- Reversed flyout, sliding menu... (call it what you want)
 - MVVM architecture
 - `CollectionView` and `CarouselView`
 - Custom indicator view
