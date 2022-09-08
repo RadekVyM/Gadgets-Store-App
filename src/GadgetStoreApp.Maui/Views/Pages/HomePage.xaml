@@ -8,9 +8,10 @@
              xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core"
              
              x:DataType="{x:Type core:HomePageViewModel}">
-    
+
     <!--
         https://github.com/dotnet/maui/issues/9485
+        https://github.com/dotnet/maui/issues/9952
         Maybe: https://github.com/dotnet/maui/issues/7494
     
         CarouselView and items of main CollectionView do not show on Windows
