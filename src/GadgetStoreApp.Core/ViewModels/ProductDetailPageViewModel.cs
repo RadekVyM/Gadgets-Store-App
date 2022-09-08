@@ -48,7 +48,7 @@ namespace GadgetStoreApp.Core
 
         public override void OnPagePushing(params object[] parameters)
         {
-            if (parameters != null || parameters.Length != 0)
+            if (parameters is not null && parameters.Length != 0)
                 Product = parameters[0] as Product;
         }
     }

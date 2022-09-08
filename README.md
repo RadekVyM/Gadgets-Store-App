@@ -1,34 +1,47 @@
 # Gadgets Store App
-A **Xamarin.Forms** application based on [Gadgets Store App](https://dribbble.com/shots/6983164-Gadgets-Store-App) design by [Sajon](https://dribbble.com/sajon007).
+
+**.NET MAUI** implementation of [Gadgets Store App](https://dribbble.com/shots/6983164-Gadgets-Store-App) design by [Sajon](https://dribbble.com/sajon007).
 
 ## Original design
-[![Dribbble Design](https://github.com/RadekVyM/Gadgets-Store-App/blob/main/originaldesign.png)](https://dribbble.com/shots/6983164-Gadgets-Store-App)
 
-## My Xamarin.Forms implementation
-The application uses Shell navigation and works only on Android.
+[![Dribbble Design](./originaldesign.png)](https://dribbble.com/shots/6983164-Gadgets-Store-App)
 
-<img src="https://github.com/RadekVyM/Gadgets-Store-App/blob/main/flyout.gif" data-canonical-src="https://github.com/RadekVyM/Gadgets-Store-App/blob/main/flyout.gif" width="440" height="880" />
+## My .NET MAUI implementation
 
-<img src="https://github.com/RadekVyM/Gadgets-Store-App/blob/main/home.gif" data-canonical-src="https://github.com/RadekVyM/Gadgets-Store-App/blob/main/home.gif" width="440" height="880" />
+<p align="center">
+    <img src="./samples/gadget_store_home.png" data-canonical-src="./samples/gadget_store_home.png" width="500" />
+</p>
 
-<img src="https://github.com/RadekVyM/Gadgets-Store-App/blob/main/productdetail.gif" data-canonical-src="https://github.com/RadekVyM/Gadgets-Store-App/blob/main/productdetail.gif" width="440" height="880" />
+The application was built using .NET MAUI APIs and my [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit) library.
 
-Feel free to take this code and do what you will, but please make sure you acknowledge myself and also the original designer.
+### Supported platforms
+These are all the platforms the app works on:
 
-## Used packages
+- Android
+- iOS
 
-[Xamarin.Forms](https://www.nuget.org/packages/Xamarin.Forms)
+<p align="center">
+    <img src="./samples/gadget_store_home.gif" data-canonical-src="./samples/gadget_store_home.gif" width="200">
+    <img src="./samples/gadget_store_menu.gif" data-canonical-src="./samples/gadget_store_menu.gif" width="200">
+    <img src="./samples/gadget_store_detail.gif" data-canonical-src="./samples/gadget_store_detail.gif" width="200">
+</p>
 
-[Xamarin.Essentials](https://www.nuget.org/packages/Xamarin.Essentials)
+<p align="center">
+    <img src="./samples/iphone_gadget_store_home.png" data-canonical-src="./samples/iphone_gadget_store_home.png" width="200">
+    <img src="./samples/iphone_gadget_store_menu.png" data-canonical-src="./samples/iphone_gadget_store_menu.png" width="200">
+    <img src="./samples/iphone_gadget_store_detail.png" data-canonical-src="./samples/iphone_gadget_store_detail.png" width="200">
+</p>
 
-[SkiaSharp.Views.Forms](https://www.nuget.org/packages/SkiaSharp.Views.Forms)
+### Features
 
-[Sharpnado.Shadows](https://www.nuget.org/packages/Sharpnado.Shadows/)
-
-[Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/)
-
-[glidex.forms](https://www.nuget.org/packages/glidex.forms/)
-
-[Xamarin.FFImageLoading.Forms](https://www.nuget.org/packages/Xamarin.FFImageLoading.Forms/)
+- Use of my [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit) library
+    - `SimpleShell`
+    - `Icon` control
+    - `ContentButton`
+- Reversed flyout, sliding menu... (call it what you want)
+- MVVM architecture
+- `CollectionView` and `CarouselView`
+- Custom indicator view
+- Use of the new .NET MAUI APIs and controls
 
 [![snppts](https://camo.githubusercontent.com/cd35f0ca9d14d9c9a7c4f35e9321fc32fa6369570292080e6c44fe8522768139/68747470733a2f2f7777772e736e707074732e6465762f696d672f736e707074732d62616467652e6a7067)](https://snppts.dev/)
