@@ -31,8 +31,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SimpleToolkit.Core" Version="1.0.0-preview1" />
-		<PackageReference Include="SimpleToolkit.SimpleShell" Version="1.0.0-preview1" />
+		<PackageReference Include="SimpleToolkit.Core" Version="1.0.*-*" />
+		<PackageReference Include="SimpleToolkit.SimpleShell" Version="1.0.*-*" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -96,6 +96,23 @@
 		<MauiImage Update="Resources\Images\vokyl3.jpg">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</MauiImage>
+
+		<MauiImage Update="Resources\Images\apple1.jpg" BaseSize="500,500" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\apple2.jpg" BaseSize="350,350" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\apple3.jpg" BaseSize="400,400" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\freebuds1.jpg" BaseSize="300,300" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\freebuds2.jpg" BaseSize="467,466" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\freebuds3.jpg" BaseSize="300,300" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\logo.png" BaseSize="64,24" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\nura1.jpg" BaseSize="400,400" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\nura2.jpg" BaseSize="644,550" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\nura3.jpg" BaseSize="400,400" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\sony1.jpg" BaseSize="480,480" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\sony2.jpg" BaseSize="540,540" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\sony3.jpg" BaseSize="205,205" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\vokyl1.jpg" BaseSize="450,600" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\vokyl2.jpg" BaseSize="450,600" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
+		<MauiImage Update="Resources\Images\vokyl3.jpg" BaseSize="350,350" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'"/>
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />

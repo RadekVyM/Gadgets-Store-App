@@ -21,13 +21,10 @@ namespace GadgetStoreApp.Maui
                     fonts.AddFont("GlacialIndifference-Regular.otf", "RegularFont");
                 });
 
-            Microsoft.Maui.Handlers.LayoutHandler.Mapper.PrependToMapping("EnableIgnoreSafeArea", (handler, layout) =>
-            {
-                (layout as Layout).IgnoreSafeArea = true;
-            });
-
             builder.UseSimpleToolkit();
             builder.UseSimpleShell();
+
+            builder.DisplayContentBehindBars();
 
             builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddSingleton<ICartManager, CartManager>();

@@ -2,6 +2,7 @@
 using GadgetStoreApp.Maui.Extensions;
 using GadgetStoreApp.Maui.Views.Pages;
 using Microsoft.Maui.Controls.Shapes;
+using SimpleToolkit.Core;
 
 namespace GadgetStoreApp.Maui
 {
@@ -29,6 +30,23 @@ namespace GadgetStoreApp.Maui
                 LightBackgroundColor = App.Current.Resources.GetValue<Color>("LightBackgroundColor"),
             };
             pageContainer.SizeChanged += PageContainerSizeChanged;
+
+            Loaded += AppShellLoaded;
+            Navigated += AppShellNavigated;
+        }
+
+        private void AppShellNavigated(object sender, ShellNavigatedEventArgs e)
+        {
+            CurrentPage.SetNavigationBarAppearence();
+        }
+
+        private void AppShellLoaded(object sender, EventArgs e)
+        {
+            Window.SubscribeToSafeAreaChanges(safeArea =>
+            {
+                appBar.Margin = safeArea;
+                menuGrid.Margin = safeArea;
+            });
         }
 
         protected override void OnNavigated(ShellNavigatedEventArgs args)
@@ -58,6 +76,10 @@ namespace GadgetStoreApp.Maui
                 pageContainer.Scale = OpenScale;
                 pageContainer.TranslationX = openTranslationX;
             });
+
+#if ANDROID
+            this.Window.SetStatusBarAppearance(Colors.Transparent, true);
+#endif
         }
 
         private void CloseMenu()
@@ -81,6 +103,8 @@ namespace GadgetStoreApp.Maui
 
                 pageContainer.Clip = null;
             });
+
+            CurrentPage.SetNavigationBarAppearence();
         }
 
         private void AppBarMenuClicked(object sender, EventArgs e)
@@ -111,11 +135,6 @@ namespace GadgetStoreApp.Maui
 
         private void PageContainerSizeChanged(object sender, EventArgs e)
         {
-            var insets = this.Window.GetSafeAreaInsets();
-
-            appBar.Margin = insets;
-            menuGrid.Margin = insets;
-
             if (!isMenuClosed)
                 CloseMenu();
         }

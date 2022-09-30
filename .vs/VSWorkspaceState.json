@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src"
   ],
-  "SelectedNode": "\\GadgetStoreApp.sln",
+  "SelectedNode": "\\src\\GadgetStoreApp.sln",
   "PreviewInSolutionExplorer": false
 }

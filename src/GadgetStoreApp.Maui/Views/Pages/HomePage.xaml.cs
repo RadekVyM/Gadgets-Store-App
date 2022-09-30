@@ -1,6 +1,7 @@
 ﻿using GadgetStoreApp.Core;
 using GadgetStoreApp.Maui.Extensions;
 using GadgetStoreApp.Maui.Views.Controls;
+using SimpleToolkit.Core;
 
 namespace GadgetStoreApp.Maui.Views.Pages
 {
@@ -22,13 +23,26 @@ namespace GadgetStoreApp.Maui.Views.Pages
             SizeChanged += HomePageSizeChanged;
         }
 
+        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
+            this.Window.SubscribeToSafeAreaChanges(OnSafeAreaChanged);
+        }
+
+        protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+        {
+            base.OnNavigatedFrom(args);
+            this.Window.UnsubscribeFromSafeAreaChanges(OnSafeAreaChanged);
+        }
+
+        private void OnSafeAreaChanged(Thickness safeArea)
+        {
+            rootContentGrid.Padding = new Thickness(0, safeArea.Top + AppBar.AppBarPadding.Top, 0, 0);
+            collectionView.Margin = new Thickness(safeArea.Left, 0, safeArea.Right, 0);
+        }
+
         private void HomePageSizeChanged(object sender, EventArgs e)
         {
-            var insets = this.Window.GetSafeAreaInsets();
-
-            rootContentGrid.Padding = new Thickness(0, insets.Top + AppBar.AppBarPadding.Top, 0, 0);
-            collectionView.Margin = new Thickness(insets.Left, 0, insets.Right, 0);
-
             backgroundImage.HeightRequest = Height * 0.5d;
             whiteBoxView.HeightRequest = collectionView.Height + whiteBoxView.CornerRadius.BottomLeft;
             whiteBoxView.TranslationY = defaultWhiteBoxViewOffset - verticalOffset < 0 ? 0 : defaultWhiteBoxViewOffset - verticalOffset;
