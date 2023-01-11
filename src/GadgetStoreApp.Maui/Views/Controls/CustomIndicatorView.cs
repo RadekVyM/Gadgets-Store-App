@@ -4,6 +4,8 @@ namespace GadgetStoreApp.Maui.Views.Controls
 {
     public class CustomIndicatorView : GraphicsView
     {
+        private const string AnimationKey = "Animation";
+
         IndicatorDrawable drawable;
 
         public static readonly BindableProperty CountProperty =
@@ -26,10 +28,13 @@ namespace GadgetStoreApp.Maui.Views.Controls
             };
         }
 
-        public async void MoveTo(int newIndex)
+
+        public void MoveTo(int newIndex)
         {
             if (drawable.SelectedIndex == newIndex)
                 return;
+
+            this.AbortAnimation(AnimationKey);
 
             uint animationLength = 250;
 
@@ -42,13 +47,11 @@ namespace GadgetStoreApp.Maui.Views.Controls
                 Invalidate();
             });
 
-            animation.Commit(this, "Animation", length: animationLength, finished: (d, b) =>
+            animation.Commit(this, AnimationKey, length: animationLength, finished: (d, b) =>
             {
                 drawable.AnimationProgress = 1;
                 Invalidate();
             });
-
-            await Task.Delay((int)animationLength);
         }
 
         private static void OnCountPropertyChanged(BindableObject bindable, object oldValue, object newValue)

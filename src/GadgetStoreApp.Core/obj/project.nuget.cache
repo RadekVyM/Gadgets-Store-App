@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yD61gxIWNX8O6PI6OOMp4qvjmLAAXZnShi341zhJcIIeGwjE5iM2mL7EB0xR3LJ/O3wMRh6AmRjyPanvtNlj3A==",
+  "dgSpecHash": "FHZpHtJJQUVX93ga9p+Usgk8likLGaDUqT6RU3MKT8NumHRQ4UECR1jGy+ut3l2mj3n4DYB6cEv979CaYjn/FQ==",
   "success": true,
-  "projectFilePath": "C:\\Code\\RadekVyM\\Gadgets-Store-App\\src\\GadgetStoreApp.Core\\GadgetStoreApp.Core.csproj",
+  "projectFilePath": "/Users/radek/Code/RadekVyM/Gadgets-Store-App/src/GadgetStoreApp.Core/GadgetStoreApp.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
