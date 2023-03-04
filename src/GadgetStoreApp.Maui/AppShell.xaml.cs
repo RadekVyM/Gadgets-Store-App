@@ -3,6 +3,8 @@ using GadgetStoreApp.Maui.Extensions;
 using GadgetStoreApp.Maui.Views.Pages;
 using Microsoft.Maui.Controls.Shapes;
 using SimpleToolkit.Core;
+using SimpleToolkit.SimpleShell.Extensions;
+using SimpleToolkit.SimpleShell.Transitions;
 
 namespace GadgetStoreApp.Maui
 {
@@ -14,7 +16,6 @@ namespace GadgetStoreApp.Maui
 
         private double openTranslationX => pageContainer.Width / 1.5d;
         private bool isMenuClosed = true;
-        private BackgroundDrawable drawable;
 
 
         public AppShell()
@@ -23,7 +24,7 @@ namespace GadgetStoreApp.Maui
 
             Routing.RegisterRoute(PageEnum.ProductDetailPage.ToString(), typeof(ProductDetailPage));
 
-            backgroundGraphicsView.Drawable = drawable = new BackgroundDrawable
+            backgroundGraphicsView.Drawable = new BackgroundDrawable
             {
                 BackgroundColor = App.Current.Resources.GetValue<Color>("BackgroundColor"),
                 DarkBackgroundColor = App.Current.Resources.GetValue<Color>("DarkBackgroundColor"),
@@ -33,6 +34,38 @@ namespace GadgetStoreApp.Maui
 
             Loaded += AppShellLoaded;
             Navigated += AppShellNavigated;
+
+            this.SetTransition(
+                callback: static args =>
+                {
+                    switch (args.TransitionType)
+                    {
+                        case SimpleShellTransitionType.Switching:
+                            args.OriginPage.Opacity = 1 - args.Progress;
+                            args.DestinationPage.Opacity = args.Progress;
+                            break;
+                        case SimpleShellTransitionType.Pushing:
+                            args.DestinationPage.Opacity = args.DestinationPage.Width < 0 ? 0 : 1;
+                            args.DestinationPage.TranslationX = (1 - args.Progress) * args.DestinationPage.Width;
+                            break;
+                        case SimpleShellTransitionType.Popping:
+                            args.OriginPage.TranslationX = args.Progress * args.OriginPage.Width;
+                            break;
+                    }
+                },
+                duration: static args => 350u,
+                finished: static args =>
+                {
+                    args.DestinationPage.TranslationX = 0;
+                    args.OriginPage.TranslationX = 0;
+                    args.OriginPage.Opacity = 1;
+                    args.DestinationPage.Opacity = 1;
+                },
+                destinationPageInFront: static args => args.TransitionType switch
+                {
+                    SimpleShellTransitionType.Popping => false,
+                    _ => true
+                });
         }
 
         private void AppShellNavigated(object sender, ShellNavigatedEventArgs e)
