@@ -111,7 +111,7 @@
         <Grid
             x:Name="specsRootGrid"
             Grid.Row="1"
-            RowDefinitions="60,50,*,120"
+            RowDefinitions="60,auto,*,120"
             CompressedLayout.IsHeadless="True">
 
             <Label
@@ -134,8 +134,9 @@
             </HorizontalStackLayout>
 
             <Label
-                Grid.Row="1" Text="{Binding Product.LongDescription}" TextColor="White" FontSize="15" FontFamily="RegularFont"
-                VerticalOptions="Center" HorizontalOptions="Start" Margin="24,0"/>
+                Grid.Row="1" Text="{Binding Product.LongDescription}" TextColor="White" FontSize="14" FontFamily="RegularFont"
+                VerticalOptions="Center" HorizontalOptions="Start"
+                Margin="24, 16"/>
 
             <StackLayout
                 Grid.Row="2"

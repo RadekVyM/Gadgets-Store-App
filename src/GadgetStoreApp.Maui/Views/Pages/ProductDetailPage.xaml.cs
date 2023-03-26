@@ -23,19 +23,21 @@ namespace GadgetStoreApp.Maui.Views.Pages
             InitializeComponent();
             BindingContext = viewModel = productDetailPageViewModel;
 
+            Loaded += ProductDetailPageLoaded;
+            Unloaded += ProductDetailPageUnloaded;
+
             SizeChanged += ProductDetailPageSizeChanged;
             imagesCollectionView.SizeChanged += ImagesCollectionViewSizeChanged;
         }
 
-        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+
+        private void ProductDetailPageLoaded(object sender, EventArgs e)
         {
-            base.OnNavigatedTo(args);
             this.Window.SubscribeToSafeAreaChanges(OnSafeAreaChanged);
         }
 
-        protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+        private void ProductDetailPageUnloaded(object sender, EventArgs e)
         {
-            base.OnNavigatedFrom(args);
             this.Window.UnsubscribeFromSafeAreaChanges(OnSafeAreaChanged);
         }
 
