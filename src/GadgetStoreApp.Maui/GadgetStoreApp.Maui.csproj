@@ -30,9 +30,12 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="SimpleToolkit.Core" Version="2.0.*-*" />
-		<PackageReference Include="SimpleToolkit.SimpleShell" Version="2.1.*-*" />
+		<PackageReference Include="SimpleToolkit.Core" Version="2.0.6" />
+		<PackageReference Include="SimpleToolkit.SimpleShell" Version="2.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>

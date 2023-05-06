@@ -95,6 +95,7 @@ namespace GadgetStoreApp.Maui
             pageContainer.AbortAnimation(OpenMenuAnimationKey);
             pageContainer.AbortAnimation(CloseMenuAnimationKey);
 
+            // TODO: On Android, change of the InputTransparent property value does not work
             pageOverlay.InputTransparent = false;
             pageContainer.Clip = new RoundRectangleGeometry(new CornerRadius(30), new Rect(0, 0, pageContainer.Width, pageContainer.Height));
             

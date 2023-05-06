@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <simpleShell:SimpleShell
     x:Class="GadgetStoreApp.Maui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -172,6 +172,7 @@
                     MenuClicked="AppBarMenuClicked" BackClicked="AppBarBackClicked"/>
                 <Rectangle
                     x:Name="pageOverlay"
+                    InputTransparent="True"
                     Fill="Transparent">
                     <Rectangle.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CloseMenuButtonClicked"/>
