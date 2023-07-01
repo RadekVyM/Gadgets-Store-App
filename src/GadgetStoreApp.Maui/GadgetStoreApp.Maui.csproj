@@ -34,8 +34,8 @@
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="SimpleToolkit.Core" Version="2.0.6" />
-		<PackageReference Include="SimpleToolkit.SimpleShell" Version="2.1.1" />
+		<PackageReference Include="SimpleToolkit.Core" Version="3.0.0" />
+		<PackageReference Include="SimpleToolkit.SimpleShell" Version="3.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
