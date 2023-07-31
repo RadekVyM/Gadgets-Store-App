@@ -96,11 +96,12 @@
                 CompressedLayout.IsHeadless="True">
 
                 <simpleCore:ContentButton
-                    Margin="24"
+                    Margin="12"
+                    Padding="12"
                     HorizontalOptions="Start" VerticalOptions="Start"
-                    HeightRequest="18" WidthRequest="18"
                     Clicked="CloseMenuButtonClicked">
                     <simpleCore:Icon
+                        HeightRequest="18" WidthRequest="18"
                         Source="cross_icon.png"
                         TintColor="White"/>
                 </simpleCore:ContentButton>
@@ -153,11 +154,12 @@
                         VerticalOptions="Start" HorizontalOptions="Start" 
                         HeightRequest="1.8" CornerRadius="0.9"/>
                     
-                    <Button Grid.Row="2" Text="Logout" FontSize="17"
-                            VerticalOptions="Center" HorizontalOptions="Start"
-                            BorderColor="Transparent" BorderWidth="0"
-                            Padding="0"
-                            BackgroundColor="{DynamicResource BackgroundColor}"/>
+                    <Button
+                        Grid.Row="2" Text="Logout" FontSize="17"
+                        VerticalOptions="Center" HorizontalOptions="Start"
+                        BorderColor="Transparent" BorderWidth="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource BackgroundColor}"/>
                 </Grid>
             </Grid>
 

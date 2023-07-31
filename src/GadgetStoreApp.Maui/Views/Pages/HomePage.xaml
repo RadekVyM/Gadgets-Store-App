@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="GadgetStoreApp.Maui.Views.Pages.HomePage"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -125,8 +125,8 @@
                                 </Grid.Resources>
 
                                 <Label Grid.Row="0" Margin="24,0,0,0" VerticalOptions="Start" Text="Popular" Style="{StaticResource TitleLabelStyle}"/>
-                                <Label Grid.Row="2" Margin="24,0,0,0" VerticalOptions="Start" Text="Best Selling" Style="{StaticResource TitleLabelStyle}"/>
-                                <Label Grid.Row="4" Margin="24,0,0,0" VerticalOptions="Start" Text="All Products" Style="{StaticResource TitleLabelStyle}"/>
+                                <Label Grid.Row="2" Margin="24,8,0,0" VerticalOptions="Start" Text="Best Selling" Style="{StaticResource TitleLabelStyle}"/>
+                                <Label Grid.Row="4" Margin="24,8,0,0" VerticalOptions="Start" Text="All Products" Style="{StaticResource TitleLabelStyle}"/>
 
                                 <CollectionView
                                     Grid.Row="1" VerticalOptions="Start" HeightRequest="120"
@@ -163,7 +163,9 @@
                                                     </Grid>
 
                                                     <Border
-                                                        Margin="10" StrokeThickness="0"
+                                                        Margin="10"
+                                                        StrokeThickness="{OnPlatform Default=0, Android=1}"
+                                                        Stroke="#ededed"
                                                         VerticalOptions="End" HorizontalOptions="End"
                                                         Shadow="{StaticResource ImageShadow}">
                                                         <Border.StrokeShape>
@@ -209,16 +211,20 @@
                                     <CarouselView.ItemTemplate>
                                         <DataTemplate x:DataType="{x:Type core:Product}">
                                             <simpleCore:ContentButton
-                                                Clicked="ProductContentButtonClicked">
+                                                Clicked="ProductContentButtonClicked"
+                                                Padding="0,0,10,0">
                                                 <Border
-                                                    StrokeThickness="0"
-                                                    Margin="0,0,10,0">
+                                                    StrokeThickness="0">
                                                     <Border.StrokeShape>
                                                         <RoundRectangle CornerRadius="16"/>
                                                     </Border.StrokeShape>
                                                     <Grid
-                                                        HeightRequest="120" ColumnDefinitions="auto,*,*"
-                                                        BackgroundColor="{DynamicResource CardBackgroundColor}">
+                                                        HeightRequest="120" ColumnDefinitions="auto,*,*">
+                                                        <BoxView
+                                                            Grid.ColumnSpan="3"
+                                                            Color="{DynamicResource CardBackgroundColor}"
+                                                            CornerRadius="16"/>
+
                                                         <Border
                                                             Margin="10" StrokeThickness="0"
                                                             VerticalOptions="Start" HorizontalOptions="Start">
@@ -340,7 +346,9 @@
                                             </Grid>
 
                                             <Border
-                                                Margin="10" StrokeThickness="0"
+                                                Margin="10"
+                                                StrokeThickness="{OnPlatform Default=0, Android=1}"
+                                                Stroke="#ededed"
                                                 VerticalOptions="End" HorizontalOptions="End"
                                                 Shadow="{StaticResource ImageShadow}">
                                                 <Border.StrokeShape>
