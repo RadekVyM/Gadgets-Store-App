@@ -2,6 +2,7 @@
 
 **.NET MAUI** implementation of [Gadgets Store App](https://dribbble.com/shots/6983164-Gadgets-Store-App) design by [Sajon](https://dribbble.com/sajon007).
 
+https://github.com/RadekVyM/Gadgets-Store-App/assets/65116078/332aa779-861b-44b2-be1f-6a53dc730fae
 
 This project demonstrates how to create **custom navigation menu** using `SimpleShell` control from [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit).
 
