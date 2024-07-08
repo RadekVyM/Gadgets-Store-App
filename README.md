@@ -12,9 +12,9 @@ This project demonstrates how to create **custom navigation menu** using `Simple
 
 ## Installation
 
-First, make sure you have your Visual Studio and .NET 7 environment set up for .NET MAUI development. If not, follow the [setup instructions](https://learn.microsoft.com/dotnet/maui/get-started/installation). Then make sure you have your [Android](https://learn.microsoft.com/dotnet/maui/get-started/first-app?pivots=devices-android) or [iOS](https://learn.microsoft.com/dotnet/maui/get-started/first-app?pivots=devices-ios) platform set up for deployment of the application.
+First, make sure you have your Visual Studio and .NET 8 environment set up for .NET MAUI development. If not, follow the [setup instructions](https://learn.microsoft.com/dotnet/maui/get-started/installation). Then make sure you have your [Android](https://learn.microsoft.com/dotnet/maui/get-started/first-app?pivots=devices-android) or [iOS](https://learn.microsoft.com/dotnet/maui/get-started/first-app?pivots=devices-ios) platform set up for deployment of the application.
 
-Once everything is set up, you can clone the repo and run the application via Visual Studio.
+Once everything is set up, you can clone the repo and run the application via Visual Studio or Visual Studio Code.
 
 Here are some resources to learn more about .NET MAUI:
 
@@ -31,5 +31,3 @@ Only .NET MAUI APIs and my [SimpleToolkit](https://github.com/RadekVyM/SimpleToo
     &nbsp;&nbsp;
     <img src="./samples/ios_gadgets_store_app.gif" width="229">
 </p>
-
-[![snppts](https://camo.githubusercontent.com/cd35f0ca9d14d9c9a7c4f35e9321fc32fa6369570292080e6c44fe8522768139/68747470733a2f2f7777772e736e707074732e6465762f696d672f736e707074732d62616467652e6a7067)](https://snppts.dev/)
