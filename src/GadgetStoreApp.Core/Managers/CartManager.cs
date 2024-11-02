@@ -1,18 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
-namespace GadgetStoreApp.Core
+namespace GadgetStoreApp.Core;
+
+public class CartManager : ICartManager
 {
-    public class CartManager : ICartManager
-    {
-        public IReadOnlyCollection<Product> ProductsInCart { get; }
-        public int Count => ProductsInCart.Count;
+    private readonly ObservableCollection<Product> productsInCart = [];
 
-        public CartManager()
-        {
-            ProductsInCart = new ObservableCollection<Product>();
-        }
+    public IReadOnlyCollection<Product> ProductsInCart => productsInCart;
+    public int Count => ProductsInCart.Count;
 
-        public void AddToCart(Product item) => ((ObservableCollection<Product>)ProductsInCart).Add(item);
-    }
+    public void AddToCart(Product item) => productsInCart.Add(item);
 }

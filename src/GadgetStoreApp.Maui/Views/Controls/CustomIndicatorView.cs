@@ -6,7 +6,7 @@ namespace GadgetStoreApp.Maui.Views.Controls
     {
         private const string AnimationKey = "Animation";
 
-        IndicatorDrawable drawable;
+        private readonly IndicatorDrawable drawable;
 
         public static readonly BindableProperty CountProperty =
             BindableProperty.Create(nameof(Count), typeof(int), typeof(CustomIndicatorView), 0, BindingMode.OneWay, propertyChanged: OnCountPropertyChanged);
@@ -20,7 +20,7 @@ namespace GadgetStoreApp.Maui.Views.Controls
 
         public CustomIndicatorView()
         {
-            var color = App.Current.Resources.GetValue<Color>("CardBackgroundColor");
+            var color = App.Current.Resources.GetValue<Color>("Secondary");
             
             Drawable = drawable = new IndicatorDrawable
             {
@@ -67,7 +67,7 @@ namespace GadgetStoreApp.Maui.Views.Controls
             private float defaultWidth => 12f;
             private float spacing => 5f;
             private float selectedOpacity => 1f;
-            private float defaultOpacity => 0.2f;
+            private float defaultOpacity => 0.4f;
 
             public Color Color { get; set; }
             public int Count { get; set; }
@@ -84,8 +84,8 @@ namespace GadgetStoreApp.Maui.Views.Controls
 
                 for (int i = 0; i < Count; i++)
                 {
-                    float width = 0;
-                    float opacity = 0;
+                    float width;
+                    float opacity;
 
                     if (i == SelectedIndex)
                     {

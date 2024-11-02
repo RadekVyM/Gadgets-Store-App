@@ -9,22 +9,10 @@
     xmlns:controls="clr-namespace:GadgetStoreApp.Maui.Views.Controls"
     xmlns:pages="clr-namespace:GadgetStoreApp.Maui.Views.Pages"
     
+    Background="{StaticResource SurfaceDimBrush}"
     x:Name="thisShell">
 
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="SimplePageStates">
-            <VisualState x:Name="SimplePageState">
-                <VisualState.Setters>
-                    <Setter TargetName="appBar" Property="controls:AppBar.BackgroundType" Value="Light"/>
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="SimplePageState.HomePage">
-                <VisualState.Setters>
-                    <Setter TargetName="appBar" Property="controls:AppBar.BackgroundType" Value="Dark"/>
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
-        
         <VisualStateGroup x:Name="SimplePageTypeStates">
             <VisualState x:Name="SimplePageTypeState.RegisteredPage">
                 <VisualState.Setters>
@@ -41,39 +29,27 @@
 
     <ShellContent
         Title="Home"
-        Icon="house_icon.png"
+        Icon="home_icon.png"
         ContentTemplate="{DataTemplate pages:HomePage}"
         Route="HomePage" />
 
     <ShellContent
         Title="Profile"
-        Icon="person_icon.png"
+        Icon="profile_icon.png"
         ContentTemplate="{DataTemplate pages:ProfilePage}"
         Route="ProfilePage" />
 
     <ShellContent
-        Title="Balance"
-        Icon="wallet_icon.png"
-        ContentTemplate="{DataTemplate pages:BalancePage}"
-        Route="BalancePage" />
-
-    <ShellContent
-        Title="Cart"
-        Icon="basket_icon.png"
+        Title="Shopping bag"
+        Icon="shopping_bag_icon.png"
         ContentTemplate="{DataTemplate pages:CartPage}"
         Route="CartPage" />
 
     <ShellContent
         Title="Favorites"
-        Icon="heart_icon.png"
+        Icon="favorites_icon.png"
         ContentTemplate="{DataTemplate pages:FavoritesPage}"
         Route="FavoritesPage" />
-
-    <ShellContent
-        Title="Help"
-        Icon="phone_icon.png"
-        ContentTemplate="{DataTemplate pages:HelpPage}"
-        Route="HelpPage" />
 
     <ShellContent
         Title="Settings"
@@ -84,88 +60,68 @@
     <simpleShell:SimpleShell.Content>
         <Grid
             CompressedLayout.IsHeadless="True">
-            <GraphicsView
-                x:Name="backgroundGraphicsView"
-                BackgroundColor="{DynamicResource BackgroundColor}"/>
-            
             <Grid
                 x:Name="menuGrid"
                 WidthRequest="200"
                 HorizontalOptions="Start"
-                RowSpacing="0" RowDefinitions="auto,*"
-                CompressedLayout.IsHeadless="True">
+                VerticalOptions="Center"
+                Padding="24, 0"
+                Margin="0, 0, 0, 2"
+                RowDefinitions="36, 120, *">
 
                 <simpleCore:ContentButton
-                    Margin="12"
-                    Padding="12"
+                    StyleClass="ContainerButton"
+                    WidthRequest="36"
+                    HeightRequest="36"
                     HorizontalOptions="Start" VerticalOptions="Start"
                     Clicked="CloseMenuButtonClicked">
-                    <simpleCore:Icon
-                        HeightRequest="18" WidthRequest="18"
-                        Source="cross_icon.png"
-                        TintColor="White"/>
+                    <Image
+                        HeightRequest="20" WidthRequest="20"
+                        Source="cross_icon.png" />
                 </simpleCore:ContentButton>
 
-                <Grid
-                    x:Name="innerMenuGrid"
+                <VerticalStackLayout
                     Grid.Row="1"
-                    Margin="24,0,0,0"
-                    VerticalOptions="Fill"
-                    RowSpacing="24"
-                    RowDefinitions="*,3*,*"
+                    VerticalOptions="End" Spacing="0"
+                    Margin="0, 0, 0, 12"
                     CompressedLayout.IsHeadless="True">
-                    
-                    <VerticalStackLayout
-                        VerticalOptions="End" Spacing="0"
-                        Margin="0,0,0,12"
-                        CompressedLayout.IsHeadless="True">
-                        <Label Text="Hello," FontSize="20" TextColor="White"/>
-                        <Label Text="Jan Novák" FontSize="20" TextColor="White"/>
-                    </VerticalStackLayout>
+                    <Label Text="Hello," FontSize="20" FontFamily="BoldFont" TextColor="{StaticResource OnSurfaceDim}" />
+                    <Label Text="Jan Novák" FontSize="20" FontFamily="BoldFont" TextColor="{StaticResource OnSurfaceDim}" />
+                </VerticalStackLayout>
 
-                    <ScrollView
-                        Grid.Row="1"
-                        HorizontalOptions="Fill" VerticalOptions="Start">
-                        <StackLayout
-                            x:Name="itemsStack"
-                            Spacing="5"
-                            VerticalOptions="Center" HorizontalOptions="Fill"
-                            BindableLayout.ItemsSource="{Binding Source={x:Reference thisShell}, Path=ShellContents}"
-                            CompressedLayout.IsHeadless="True">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate x:DataType="BaseShellItem">
-                                    <simpleCore:ContentButton
-                                        Clicked="MenuItemButtonClicked">
-                                        <HorizontalStackLayout Spacing="10" Padding="0,10">
-                                            <Image
-                                                Source="{Binding Icon}" Aspect="AspectFit"
-                                                HorizontalOptions="Start" VerticalOptions="Center"
-                                                HeightRequest="18" WidthRequest="18"/>
-                                            <Label Text="{Binding Title}" TextColor="White" FontSize="14" Margin="0,1,0,0"/>
-                                        </HorizontalStackLayout>
-                                    </simpleCore:ContentButton>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </StackLayout>
-                    </ScrollView>
-                    
-                    <BoxView
-                        x:Name="lineBoxView" Grid.Row="2" Color="{DynamicResource LightBackgroundColor}"
-                        VerticalOptions="Start" HorizontalOptions="Start" 
-                        HeightRequest="1.8" CornerRadius="0.9"/>
-                    
-                    <Button
-                        Grid.Row="2" Text="Logout" FontSize="17"
-                        VerticalOptions="Center" HorizontalOptions="Start"
-                        BorderColor="Transparent" BorderWidth="0"
-                        Padding="0"
-                        BackgroundColor="{DynamicResource BackgroundColor}"/>
-                </Grid>
+                <ScrollView
+                    Grid.Row="2"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                    <StackLayout
+                        x:Name="itemsStack"
+                        Spacing="4"
+                        VerticalOptions="End" HorizontalOptions="Fill"
+                        BindableLayout.ItemsSource="{Binding Source={x:Reference thisShell}, Path=ShellContents}"
+                        CompressedLayout.IsHeadless="True">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="BaseShellItem">
+                                <simpleCore:ContentButton
+                                    Clicked="MenuItemButtonClicked">
+                                    <HorizontalStackLayout Spacing="15" Padding="0,10">
+                                        <Image
+                                            Source="{Binding Icon}" Aspect="AspectFit"
+                                            HorizontalOptions="Start" VerticalOptions="Center"
+                                            HeightRequest="20" WidthRequest="20"/>
+                                        <Label Text="{Binding Title}" TextColor="{StaticResource OnSurfaceDim}" FontSize="16" FontFamily="BoldFont" Margin="0,1,0,0"/>
+                                    </HorizontalStackLayout>
+                                </simpleCore:ContentButton>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
             </Grid>
 
             <!--Margin="300,0,0,0"-->
 
-            <Grid x:Name="pageContainer">
+            <Grid
+                x:Name="pageContainer"
+                Background="{StaticResource Surface}">
                 <simpleShell:SimpleNavigationHost/>
                 <controls:AppBar
                     x:Name="appBar"

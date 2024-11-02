@@ -1,6 +1,6 @@
 # Gadgets Store App
 
-**.NET MAUI** implementation of [Gadgets Store App](https://dribbble.com/shots/6983164-Gadgets-Store-App) design by [Sajon](https://dribbble.com/sajon007).
+**.NET MAUI** prototype of an e-shop app inspired by the [Gadgets Store App](https://dribbble.com/shots/6983164-Gadgets-Store-App) design by [Sajon](https://dribbble.com/sajon).
 
 https://github.com/RadekVyM/Gadgets-Store-App/assets/65116078/332aa779-861b-44b2-be1f-6a53dc730fae
 
@@ -8,7 +8,9 @@ This project demonstrates how to create **custom navigation menu** using `Simple
 
 ## Original design
 
-[![Dribbble Design](./originaldesign.png)](https://dribbble.com/shots/6983164-Gadgets-Store-App)
+Many thanks to [Sajon](https://dribbble.com/sajon) for their beautiful original work.
+
+[![Dribbble Design](./samples/originaldesign.png)](https://dribbble.com/shots/6983164-Gadgets-Store-App)
 
 ## Installation
 
@@ -27,7 +29,7 @@ Here are some resources to learn more about .NET MAUI:
 Only .NET MAUI APIs and my [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit) library were used to create this sample.
 
 <p align="center">
-    <img src="./samples/android_gadgets_store_app.gif" width="220">
+    <img src="./samples/android_gadgets_store_app.webp" width="225">
     &nbsp;&nbsp;
-    <img src="./samples/ios_gadgets_store_app.gif" width="229">
+    <img src="./samples/ios_gadgets_store_app.webp" width="228">
 </p>

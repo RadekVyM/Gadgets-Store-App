@@ -1,179 +1,125 @@
 ﻿using GadgetStoreApp.Core;
-using GadgetStoreApp.Maui.Extensions;
 using GadgetStoreApp.Maui.Views.Pages;
 using Microsoft.Maui.Controls.Shapes;
 using SimpleToolkit.Core;
 
-namespace GadgetStoreApp.Maui
+namespace GadgetStoreApp.Maui;
+
+public partial class AppShell : SimpleToolkit.SimpleShell.SimpleShell
 {
-    public partial class AppShell : SimpleToolkit.SimpleShell.SimpleShell
+    private const string OpenMenuAnimationKey = "OpenMenuAnimation";
+    private const string CloseMenuAnimationKey = "CloseMenuAnimation";
+    private const double OpenScale = 0.8;
+    private const double PageCornerRadius = 20;
+
+    private double openTranslationX => pageContainer.Width / 1.9d;
+    private bool isMenuClosed = true;
+
+
+    public AppShell()
     {
-        private const string OpenMenuAnimationKey = "OpenMenuAnimation";
-        private const string CloseMenuAnimationKey = "CloseMenuAnimation";
-        private const double OpenScale = 0.8;
+        InitializeComponent();
 
-        private double openTranslationX => pageContainer.Width / 1.5d;
-        private bool isMenuClosed = true;
+        Routing.RegisterRoute(PageEnum.ProductDetailPage.ToString(), typeof(ProductDetailPage));
 
+        pageContainer.SizeChanged += PageContainerSizeChanged;
 
-        public AppShell()
+        Loaded += AppShellLoaded;
+    }
+
+    private void AppShellLoaded(object sender, EventArgs e)
+    {
+        Window.SubscribeToSafeAreaChanges(safeArea =>
         {
-            InitializeComponent();
+            appBar.Margin = safeArea;
+            menuGrid.Margin = safeArea;
+        });
+    }
 
-            Routing.RegisterRoute(PageEnum.ProductDetailPage.ToString(), typeof(ProductDetailPage));
+    protected override void OnNavigated(ShellNavigatedEventArgs args)
+    {
+        base.OnNavigated(args);
+        pageOverlay.InputTransparent = true;
+    }
 
-            backgroundGraphicsView.Drawable = new BackgroundDrawable
-            {
-                BackgroundColor = App.Current.Resources.GetValue<Color>("BackgroundColor"),
-                DarkBackgroundColor = App.Current.Resources.GetValue<Color>("DarkBackgroundColor"),
-                LightBackgroundColor = App.Current.Resources.GetValue<Color>("LightBackgroundColor"),
-            };
-            pageContainer.SizeChanged += PageContainerSizeChanged;
+    private void OpenMenu()
+    {
+        isMenuClosed = false;
 
-            Loaded += AppShellLoaded;
-            Navigated += AppShellNavigated;
-        }
+        pageContainer.AbortAnimation(OpenMenuAnimationKey);
+        pageContainer.AbortAnimation(CloseMenuAnimationKey);
 
-        private void AppShellNavigated(object sender, ShellNavigatedEventArgs e)
+        // TODO: On Android, change of the InputTransparent property value does not work
+        pageOverlay.InputTransparent = false;
+        pageContainer.Clip = new RoundRectangleGeometry(new CornerRadius(PageCornerRadius), new Rect(0, 0, pageContainer.Width, pageContainer.Height));
+        
+        Animation animation = new Animation(d =>
         {
-            CurrentPage.SetNavigationBarAppearence();
-        }
+            pageContainer.Scale = 1 - ((1 - OpenScale) * d);
+            pageContainer.TranslationX = openTranslationX * d;
+        });
 
-        private void AppShellLoaded(object sender, EventArgs e)
+        animation.Commit(pageContainer, OpenMenuAnimationKey, finished: (d, b) =>
         {
-            Window.SubscribeToSafeAreaChanges(safeArea =>
-            {
-                appBar.Margin = safeArea;
-                menuGrid.Margin = safeArea;
-            });
-        }
+            pageContainer.Scale = OpenScale;
+            pageContainer.TranslationX = openTranslationX;
+        });
+    }
 
-        protected override void OnNavigated(ShellNavigatedEventArgs args)
+    private void CloseMenu()
+    {
+        isMenuClosed = true;
+
+        pageContainer.AbortAnimation(OpenMenuAnimationKey);
+        pageContainer.AbortAnimation(CloseMenuAnimationKey);
+
+        Animation animation = new Animation(d =>
         {
-            base.OnNavigated(args);
+            pageContainer.Scale = OpenScale + ((1 - OpenScale) * d);
+            pageContainer.TranslationX = openTranslationX - (openTranslationX * d);
+        });
+
+        animation.Commit(pageContainer, CloseMenuAnimationKey, finished: (d, b) =>
+        {
+            pageContainer.Scale = 1;
+            pageContainer.TranslationX = 0;
             pageOverlay.InputTransparent = true;
-        }
 
-        private void OpenMenu()
-        {
-            isMenuClosed = false;
+            pageContainer.Clip = null;
+        });
+    }
 
-            pageContainer.AbortAnimation(OpenMenuAnimationKey);
-            pageContainer.AbortAnimation(CloseMenuAnimationKey);
+    private void AppBarMenuClicked(object sender, EventArgs e)
+    {
+        if (isMenuClosed)
+            OpenMenu();
+    }
 
-            // TODO: On Android, change of the InputTransparent property value does not work
-            pageOverlay.InputTransparent = false;
-            pageContainer.Clip = new RoundRectangleGeometry(new CornerRadius(30), new Rect(0, 0, pageContainer.Width, pageContainer.Height));
-            
-            Animation animation = new Animation(d =>
-            {
-                pageContainer.Scale = 1 - ((1 - OpenScale) * d);
-                pageContainer.TranslationX = openTranslationX * d;
-            });
-
-            animation.Commit(pageContainer, OpenMenuAnimationKey, finished: (d, b) =>
-            {
-                pageContainer.Scale = OpenScale;
-                pageContainer.TranslationX = openTranslationX;
-            });
-
-#if ANDROID
-            this.Window.SetStatusBarAppearance(Colors.Transparent, true);
-#endif
-        }
-
-        private void CloseMenu()
-        {
-            isMenuClosed = true;
-
-            pageContainer.AbortAnimation(OpenMenuAnimationKey);
-            pageContainer.AbortAnimation(CloseMenuAnimationKey);
-
-            Animation animation = new Animation(d =>
-            {
-                pageContainer.Scale = OpenScale + ((1 - OpenScale) * d);
-                pageContainer.TranslationX = openTranslationX - (openTranslationX * d);
-            });
-
-            animation.Commit(pageContainer, CloseMenuAnimationKey, finished: (d, b) =>
-            {
-                pageContainer.Scale = 1;
-                pageContainer.TranslationX = 0;
-                pageOverlay.InputTransparent = true;
-
-                pageContainer.Clip = null;
-            });
-
-            CurrentPage.SetNavigationBarAppearence();
-        }
-
-        private void AppBarMenuClicked(object sender, EventArgs e)
-        {
-            if (isMenuClosed)
-                OpenMenu();
-        }
-
-        private void CloseMenuButtonClicked(object sender, EventArgs e)
-        {
-            if (!isMenuClosed)
-                CloseMenu();
-        }
-
-        private void AppBarBackClicked(object sender, EventArgs e)
-        {
-            GoToAsync("..");
-        }
-
-        private void MenuItemButtonClicked(object sender, EventArgs e)
-        {
-            var view = sender as View;
-            var shellItem = view.BindingContext as BaseShellItem;
-
-            GoToAsync($"///{shellItem.Route}");
+    private void CloseMenuButtonClicked(object sender, EventArgs e)
+    {
+        if (!isMenuClosed)
             CloseMenu();
-        }
+    }
 
-        private void PageContainerSizeChanged(object sender, EventArgs e)
-        {
-            if (!isMenuClosed)
-                CloseMenu();
-        }
+    private void AppBarBackClicked(object sender, EventArgs e)
+    {
+        GoToAsync("..");
+    }
 
-        private class BackgroundDrawable : IDrawable
-        {
-            private float darkRectRelativeHeight = 0.45f;
-            private float visibleWidth = 12f;
-            private float verticalOffset = 30f;
-            private float cornerRadius => (float)(30f * OpenScale);
+    private void MenuItemButtonClicked(object sender, EventArgs e)
+    {
+        var view = sender as View;
+        var shellItem = view.BindingContext as BaseShellItem;
 
-            public Color BackgroundColor { get; set; }
-            public Color DarkBackgroundColor { get; set; }
-            public Color LightBackgroundColor { get; set; }
+        GoToAsync($"///{shellItem.Route}");
+        CloseMenu();
+    }
 
-            public void Draw(ICanvas canvas, RectF dirtyRect)
-            {
-                canvas.SaveState();
+    private void PageContainerSizeChanged(object sender, EventArgs e)
+    {
+        menuGrid.HeightRequest = pageContainer.Height * OpenScale;
 
-                canvas.SetFillPaint(new SolidPaint(BackgroundColor), dirtyRect);
-                canvas.FillRectangle(dirtyRect);
-
-                var left = (dirtyRect.Width * 1.5f) - (dirtyRect.Width * OpenScale) - visibleWidth;
-                var top = ((dirtyRect.Height - (dirtyRect.Height * OpenScale)) / 2f) + verticalOffset;
-
-                RectF lightRect = new Rect(left, top, dirtyRect.Width * OpenScale, (dirtyRect.Height * OpenScale) - (2 * verticalOffset));
-
-                canvas.SetFillPaint(new SolidPaint(LightBackgroundColor), lightRect);
-                canvas.FillRoundedRectangle(lightRect, cornerRadius);
-
-                var darkRectHeight = darkRectRelativeHeight * lightRect.Height;
-
-                RectF darkRect = new Rect(lightRect.X, lightRect.Y + lightRect.Height - darkRectHeight, lightRect.Width, darkRectHeight);
-
-                canvas.SetFillPaint(new SolidPaint(DarkBackgroundColor), darkRect);
-                canvas.FillRoundedRectangle(darkRect, cornerRadius);
-
-                canvas.RestoreState();
-            }
-        }
+        if (!isMenuClosed)
+            CloseMenu();
     }
 }

@@ -5,7 +5,7 @@ namespace GadgetStoreApp.Core
     public interface IProductsManager
     {
         IEnumerable<Product> GetAllProducts();
-        IEnumerable<Product> GetBestSellingProducts();
         IEnumerable<Product> GetPopularProducts();
+        IEnumerable<Product> GetLimitedOfferProducts();
     }
 }

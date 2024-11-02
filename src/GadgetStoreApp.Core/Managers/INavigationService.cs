@@ -1,9 +1,7 @@
-﻿namespace GadgetStoreApp.Core
+﻿namespace GadgetStoreApp.Core;
+
+public interface INavigationService
 {
-    public interface INavigationService
-    {
-        void Push(PageEnum page, params object[] parameters);
-        void Pop();
-        void OpenFlyout();
-    }
+    void Push(PageEnum page, params object[] parameters);
+    void Pop();
 }

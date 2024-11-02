@@ -1,38 +1,29 @@
 ﻿using GadgetStoreApp.Core;
 
-namespace GadgetStoreApp.Maui.Services
+namespace GadgetStoreApp.Maui.Services;
+
+public class NavigationService : INavigationService
 {
-    public class NavigationService : INavigationService
+    private readonly PageEnum[] rootPages = [PageEnum.HomePage, PageEnum.ProfilePage, PageEnum.SettingsPage, PageEnum.BalancePage, PageEnum.CartPage, PageEnum.FavoritesPage, PageEnum.HelpPage];
+
+    public void Pop()
     {
-        private PageEnum[] rootPages = new PageEnum[] { PageEnum.HomePage, PageEnum.ProfilePage, PageEnum.SettingsPage, PageEnum.BalancePage, PageEnum.CartPage, PageEnum.FavoritesPage, PageEnum.HelpPage };
+        Shell.Current.Navigation.PopAsync();
+    }
 
-        public async void OpenFlyout()
-        {
-            //    if (Shell.Current.CurrentItem is CustomFlyout flyout)
-            //    {
-            //        await flyout.ReversedFlyout.OpenAsync();
-            //    }
-        }
+    public void Push(PageEnum page, params object[] parameters)
+    {
+        Shell.Current.GoToAsync(GetPagePath(page));
+        Page lastPage = Shell.Current.Navigation.NavigationStack.LastOrDefault();
 
-        public void Pop()
-        {
-            Shell.Current.Navigation.PopAsync();
-        }
+        if (lastPage != null)
+            ((IBasePageViewModel)lastPage.BindingContext).OnPagePushing(parameters);
+    }
 
-        public void Push(PageEnum page, params object[] parameters)
-        {
-            Shell.Current.GoToAsync(GetPagePath(page));
-            Page lastPage = Shell.Current.Navigation.NavigationStack.LastOrDefault();
-
-            if (lastPage != null)
-                ((IBasePageViewModel)lastPage.BindingContext).OnPagePushing(parameters);
-        }
-
-        private string GetPagePath(PageEnum page)
-        {
-            if (rootPages.Contains(page))
-                return $"///{page.ToString()}";
-            return page.ToString();
-        }
+    private string GetPagePath(PageEnum page)
+    {
+        if (rootPages.Contains(page))
+            return $"///{page}";
+        return page.ToString();
     }
 }
