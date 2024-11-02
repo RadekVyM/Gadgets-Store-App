@@ -2,7 +2,9 @@
 
 **.NET MAUI** prototype of an e-shop app inspired by the [Gadgets Store App](https://dribbble.com/shots/6983164-Gadgets-Store-App) design by [Sajon](https://dribbble.com/sajon).
 
-https://github.com/RadekVyM/Gadgets-Store-App/assets/65116078/332aa779-861b-44b2-be1f-6a53dc730fae
+
+https://github.com/user-attachments/assets/025ca22d-3ca0-4d67-95aa-8e3b6bc14ddf
+
 
 This project demonstrates how to create **custom navigation menu** using `SimpleShell` control from [SimpleToolkit](https://github.com/RadekVyM/SimpleToolkit).
 
